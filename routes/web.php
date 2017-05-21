@@ -16,5 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('foo', function () {
-    return 'Year! Hello World!';
+    return 'Foo!';
+});
+
+Route::get('bar', function () {
+    return 'Bar!';
 });

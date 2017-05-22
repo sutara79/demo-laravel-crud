@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return view('toppage');
 });
 
-Route::get('foo', function () {
-    return 'Foo!';
-});
+Route::get('user/foo', 'UserController@foo');
+Route::get('user/{id}', 'UserController@show');
 
 Route::get('bar', function () {
     return 'Bar!';

@@ -11,7 +11,7 @@
         {{ env('APP_NAME') }}
         </title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-alpha.6/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ asset('css/my.css') }}">
+        <link rel="stylesheet" href="{{ secure_asset('css/my.css') }}">
     </head>
     <body>
         <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">

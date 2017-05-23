@@ -21,15 +21,38 @@ class UserController extends Controller
         // Query Builder -> https://laravel.com/docs/5.4/queries
         $user = DB::table('users')->where('id', 1)->first();
         // return view('user.foo', ['name' => $user->name]);
-        return view('user.foo', ['name' => User::findOrFail(1)]);
+        return view('user.foo', [
+            'path' => database_path(),
+            'name' => User::findOrFail(1)]
+        );
     }
+
     /**
-     * 指定ユーザの詳細を表示
+     * Show all users.
+     *
+     * @return Response
+     */
+    public function all()
+    {
+        $users = User::all();
+        return view('user.all', [
+            'title' => 'User',
+            'users' => $users
+        ]);
+    }
+
+    /**
+     * Show specific user.
+     *
      * @param  int  $id
      * @return Response
      */
     public function show($id)
     {
-        return view('user.show', ['user' => User::findOrFail($id)]);
+        $user = User::findOrFail($id);
+        return view('user.show', [
+            'title' => 'Detail: ' . $user->name,
+            'user' => $user
+        ]);
     }
 }

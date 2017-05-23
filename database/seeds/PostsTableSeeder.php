@@ -19,5 +19,9 @@ class PostsTableSeeder extends Seeder
             'name' => 'Test Post2',
             'body' => 'My first Laravel.',
         ]);
+        DB::table('posts')->insert([
+            'name' => 'Test Post3',
+            'body' => 'Foo Bar Baz.',
+        ]);
     }
 }

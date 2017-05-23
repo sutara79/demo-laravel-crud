@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::get('user/foo', 'UserController@foo');
 Route::get('user/{id}', 'UserController@show');
+Route::get('user', 'UserController@all');
 
 Route::get('bar', function () {
     return 'Bar!';

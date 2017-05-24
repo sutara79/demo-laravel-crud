@@ -1,15 +1,14 @@
+@php
+    $path = Request::path();
+    $reg_user = '/^user$|^user\//';
+@endphp
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>
-        @if (Request::path() != '/')
-            @yield('title') | 
-        @endif
-        {{ env('APP_NAME') }}
-        </title>
+        <title>@if ($path != '/') @yield('title') | @endif{{ env('APP_NAME') }}</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-alpha.6/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ secure_asset('css/my.css') }}">
     </head>
@@ -22,14 +21,21 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-<!--                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ secure_url('/') }}">Home</a>
+                    <li class="nav-item @if ($path == '/') active @endif">
+                        <a class="nav-link" href="{{ secure_url('/') }}">
+                            Home
+                            @if ($path == '/')
+                                <span class="sr-only">(current)</span>
+                            @endif
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ secure_url('user') }}">User</a>
+                    <li class="nav-item @if (preg_match($reg_user, $path)) active @endif">
+                        <a class="nav-link" href="{{ secure_url('user') }}">
+                            User
+                            @if (preg_match($reg_user, $path))
+                                <span class="sr-only">(current)</span>
+                            @endif
+                        </a>
                     </li>
                 </ul>
             </div>

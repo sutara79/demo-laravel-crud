@@ -23,13 +23,13 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <a href="{{ url('user/' . $user->id) }}">
+                        <a href="{{ url("users/{$user->id}") }}">
                             Show
                         </a>
-                        <a href="{{ url('user/edit/' . $user->id) }}">
+                        <a href="{{ url("users/{$user->id}/edit") }}">
                             Edit
                         </a>
-                        <a href="{{ url('user/delete/' . $user->id) }}">
+                        <a href="{{ url("users/{$user->id}") }}">
                             Delete
                         </a>
                     </td>

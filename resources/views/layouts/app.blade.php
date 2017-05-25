@@ -1,6 +1,6 @@
 @php
     $path = Request::path();
-    $reg_user = '/^user$|^user\//';
+    $reg_users = '/^users$|^users\//';
 @endphp
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
@@ -29,10 +29,10 @@
                             @endif
                         </a>
                     </li>
-                    <li class="nav-item @if (preg_match($reg_user, $path)) active @endif">
-                        <a class="nav-link" href="{{ secure_url('user') }}">
-                            User
-                            @if (preg_match($reg_user, $path))
+                    <li class="nav-item @if (preg_match($reg_users, $path)) active @endif">
+                        <a class="nav-link" href="{{ secure_url('users') }}">
+                            Users
+                            @if (preg_match($reg_users, $path))
                                 <span class="sr-only">(current)</span>
                             @endif
                         </a>

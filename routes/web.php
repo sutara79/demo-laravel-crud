@@ -16,10 +16,19 @@ Route::get('/', function () {
     return view('toppage');
 });
 
-Route::get('user/foo', 'UserController@foo');
-Route::get('user/{id}', 'UserController@show');
-Route::get('user', 'UserController@all');
+// Route::get('user/foo', 'UserController@foo');
+// Route::get('user/edit/{id}', 'UserController@editGet');
+// Route::post('user/edit/{id}', 'UserController@editPost');
+// Route::get('user/{id}', 'UserController@show');
+// Route::get('user', 'UserController@all');
 
-Route::get('bar', function () {
-    return 'Bar!';
+
+Route::resource('users', 'UserController');
+
+Route::get('foo', function () {
+    return 'Foo!';
 });
+Route::get('foo/foo1', 'FooController@foo1');
+Route::get('foo/foo2', 'FooController@foo2');
+Route::get('foo/foo3', 'FooController@foo3');
+Route::get('foo/foo4', 'FooController@foo4');

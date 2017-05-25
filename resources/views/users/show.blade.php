@@ -4,6 +4,14 @@
 
 @section('content')
 <h1>{{ $title }}</h1>
+<p>
+    <a href="{{ secure_url("users/{$user->id}/edit") }}">
+        Edit
+    </a>
+    <a href="{{ secure_url("users/{$user->id}") }}">
+        Delete
+    </a>
+</p>
 <div class="table-responsive">
     <table class="table table-striped">
         <tbody>

@@ -5,7 +5,9 @@
 @section('content')
 <h1>{{ $title }}</h1>
 
-
+<div>
+    <a href="{{ url('users/create') }}">Create</a>
+</div>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -29,9 +31,10 @@
                         <a href="{{ url("users/{$user->id}/edit") }}">
                             Edit
                         </a>
-                        <a href="{{ url("users/{$user->id}") }}">
-                            Delete
-                        </a>
+                        @component('form-del')
+                            @slot('table', 'users')
+                            @slot('id', $user->id)
+                        @endcomponent
                     </td>
                  </tr>
             @endforeach

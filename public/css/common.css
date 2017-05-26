@@ -1,0 +1,8 @@
+body {
+  padding-top: 56px;
+}
+
+/* <form> to delete a record */
+.js-form-del {
+  display: inline-block;
+}

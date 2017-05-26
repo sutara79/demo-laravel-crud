@@ -4,7 +4,7 @@
 
 @section('content')
 <h1>{{ $title }}</h1>
-<form action="{{ secure_url("users/{$user->id}/edit") }}" method="post">
+<form action="{{ secure_url("users/{$user->id}") }}" method="post">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
     <p>

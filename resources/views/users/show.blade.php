@@ -4,14 +4,15 @@
 
 @section('content')
 <h1>{{ $title }}</h1>
-<p>
+<div>
     <a href="{{ secure_url("users/{$user->id}/edit") }}">
         Edit
     </a>
-    <a href="{{ secure_url("users/{$user->id}") }}">
-        Delete
-    </a>
-</p>
+    @component('form-del')
+        @slot('table', 'users')
+        @slot('id', $user->id)
+    @endcomponent
+</div>
 <div class="table-responsive">
     <table class="table table-striped">
         <tbody>

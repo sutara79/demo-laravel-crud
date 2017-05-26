@@ -11,17 +11,15 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('posts')->insert([
-            'name' => 'Test Post1',
-            'body' => 'Hello World!',
-        ]);
-        DB::table('posts')->insert([
-            'name' => 'Test Post2',
-            'body' => 'My first Laravel.',
-        ]);
-        DB::table('posts')->insert([
-            'name' => 'Test Post3',
-            'body' => 'Foo Bar Baz.',
-        ]);
+        // Use Faker
+        // https://github.com/fzaninotto/Faker
+        $faker = Faker\Factory::create('ja_JP');
+        for ($i = 0; $i < 20; $i++)
+        {
+            DB::table('posts')->insert([
+                'name' => $faker->text(20),
+                'body' => $faker->text(200),
+            ]);
+        }
     }
 }

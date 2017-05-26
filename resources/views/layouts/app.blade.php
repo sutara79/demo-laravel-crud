@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@if ($path != '/') @yield('title') | @endif{{ env('APP_NAME') }}</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-alpha.6/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ secure_asset('css/my.css') }}">
+        <link rel="stylesheet" href="{{ secure_asset('css/common.css') }}">
     </head>
     <body>
         <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
@@ -46,5 +46,6 @@
 
         <!-- JavaScript -->
         <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.2/dist/jquery.min.js,npm/tether@1.4/dist/js/tether.min.js,npm/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js"></script>
+        <script src="{{ secure_asset('js/common.js') }}"></script>
     </body>
 </html>

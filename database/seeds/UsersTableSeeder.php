@@ -11,25 +11,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'jhon12',
-            'email' => 'jhon12@foo.com',
-            'password' => bcrypt('secret1'),
-        ]);
-        DB::table('users')->insert([
-            'name' => 'maria23',
-            'email' => 'maria23@bar.org',
-            'password' => bcrypt('secret2'),
-        ]);
-        DB::table('users')->insert([
-            'name' => 'burton34',
-            'email' => 'burton34@baz.net',
-            'password' => bcrypt('secret3'),
-        ]);
-        DB::table('users')->insert([
-            'name' => 'cate45',
-            'email' => 'cate45@foo.com',
-            'password' => bcrypt('secret4'),
-        ]);
+        // Use Faker
+        // https://github.com/fzaninotto/Faker
+        $faker = Faker\Factory::create('ja_JP');
+        for ($i = 0; $i < 20; $i++)
+        {
+            DB::table('users')->insert([
+                'name' => $faker->unique()->userName(),
+                'email' => $faker->unique()->email(),
+                'password' => bcrypt('1234'),
+            ]);
+        }
     }
 }

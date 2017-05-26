@@ -16,13 +16,6 @@ Route::get('/', function () {
     return view('toppage');
 });
 
-// Route::get('user/foo', 'UserController@foo');
-// Route::get('user/edit/{id}', 'UserController@editGet');
-// Route::post('user/edit/{id}', 'UserController@editPost');
-// Route::get('user/{id}', 'UserController@show');
-// Route::get('user', 'UserController@all');
-
-
 Route::resource('users', 'UserController');
 
 Route::get('foo', function () {

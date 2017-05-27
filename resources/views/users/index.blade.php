@@ -10,7 +10,7 @@
 <h1>{{ $title }}</h1>
 
 <div>
-    <a href="{{ url('users/create') }}">Create</a>
+    <a href="{{ url('users/create') }}">{{ __('Create') }}</a>
 </div>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -30,10 +30,10 @@
                     <td>{{ $user->email }}</td>
                     <td>
                         <a href="{{ url("users/{$user->id}") }}">
-                            Show
+                            {{ __('Show') }}
                         </a>
                         <a href="{{ url("users/{$user->id}/edit") }}">
-                            Edit
+                            {{ __('Edit') }}
                         </a>
                         @component('form-del')
                             @slot('table', 'users')

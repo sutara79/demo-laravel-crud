@@ -5,8 +5,8 @@
 @section('content')
 <h1>demo-laravel-crud</h1>
 <p>
-    Laravel 5.4で基本的なCRUDを作成する練習です。<br>
-    未完成。
+    {{ __('My practice for basic CRUD of Laravel 5.4 on Heroku.') }}<br>
+    {{ __('Unfinished.') }}
 </p>
 <ul>
     <li>

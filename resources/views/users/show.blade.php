@@ -10,7 +10,7 @@
 <h1>{{ $title }}</h1>
 <div>
     <a href="{{ secure_url("users/{$user->id}/edit") }}">
-        Edit
+        {{ __('Edit') }}
     </a>
     @component('form-del')
         @slot('table', 'users')

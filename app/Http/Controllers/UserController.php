@@ -14,11 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index', [
-            'title' => 'Users',
-            'users' => $users
-        ]);
+        // $users = User::all();
+        $users = User::paginate(5);
+        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -56,10 +54,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('users.show', [
-            'title' => 'User: ' . $user->name,
-            'user' => $user
-        ]);
+        return view('users.show', ['user' => $user]);
     }
 
     /**
@@ -71,10 +66,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', [
-            'title' => 'Edit: ' . $user->name,
-            'user' => $user
-        ]);
+        return view('users.edit', ['user' => $user]);
     }
 
     /**

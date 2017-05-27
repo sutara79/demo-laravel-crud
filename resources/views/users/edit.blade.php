@@ -1,3 +1,7 @@
+@php
+    $title = "Edit: {$user->name}";
+@endphp
+
 @extends('../layouts/app')
 
 @section('title', $title)

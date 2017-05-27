@@ -1,3 +1,7 @@
+@php
+    $title = 'Users';
+@endphp
+
 @extends('../layouts/app')
 
 @section('title', $title)
@@ -41,4 +45,5 @@
         </tbody>
     </table>
 </div>
+{{ $users->links() }}
 @endsection

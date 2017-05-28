@@ -11,17 +11,33 @@
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('toppage');
-});
+Route::group(['middleware' => 'locale'], function () {
+    // Top page
+    Route::get('/', function () {
+        // return view('welcome');
+        return view('toppage');
+    });
 
-Route::resource('users', 'UserController');
+    // User
+    Route::resource('users', 'UserController');
 
-Route::get('foo', function () {
-    return 'Foo!';
+    // Foo
+    Route::get('foo', function () {
+        return 'Foo!';
+    });
+    Route::get('foo/foo1', 'FooController@foo1');
+    Route::get('foo/foo2', 'FooController@foo2');
+    Route::get('foo/foo3', 'FooController@foo3');
+    Route::get('foo/foo4', 'FooController@foo4');
+
+    // Locale
+    Route::get('locale/{locale}', function ($locale) {
+        session(['locale' => $locale]);
+        return back();
+    });
+
+    // Auth
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
 });
-Route::get('foo/foo1', 'FooController@foo1');
-Route::get('foo/foo2', 'FooController@foo2');
-Route::get('foo/foo3', 'FooController@foo3');
-Route::get('foo/foo4', 'FooController@foo4');

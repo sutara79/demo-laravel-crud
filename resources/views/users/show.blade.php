@@ -9,7 +9,7 @@
 @section('content')
 <h1>{{ $title }}</h1>
 <div>
-    <a href="{{ secure_url("users/{$user->id}/edit") }}">
+    <a href="{{ secure_url("users/{$user->id}/edit") }}" class="btn btn-primary">
         {{ __('Edit') }}
     </a>
     @component('form-del')

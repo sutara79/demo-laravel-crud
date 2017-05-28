@@ -1,8 +1,11 @@
 {
-    "Delete": "削除",
-    "Show": "表示",
-    "Edit": "編集",
-    "Create": "新規作成",
     "My practice for basic CRUD of Laravel 5.4 on Heroku.": "Laravel 5.4の基本的なCRUDをHerokuで公開する練習です。",
-    "Unfinished.": "未完成。"
+    "Unfinished.": "未完成。",
+    "Login": "ログイン",
+    "Logout": "ログアウト",
+    "Profile": "プロフィール",
+    "Register": "ユーザー登録",
+    "Delete": "削除",
+    "Edit": "編集",
+    "Create": "新規作成"
 }

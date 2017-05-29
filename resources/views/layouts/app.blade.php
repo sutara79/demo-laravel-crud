@@ -13,20 +13,20 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"><!-- CSRF Token -->
     <title>@if ($path != '/') @yield('title') | @endif{{ env('APP_NAME') }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-alpha.6/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ secure_asset('css/common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
 </head>
 <body>
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="{{ secure_url('/') }}">{{ env('APP_NAME') }}</a>
+        <a class="navbar-brand" href="{{ url('/') }}">{{ env('APP_NAME') }}</a>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item @if (preg_match($reg_users, $path)) active @endif">
-                    <a class="nav-link" href="{{ secure_url('users') }}">
+                    <a class="nav-link" href="{{ url('users') }}">
                         {{ __('Users') }}
                         @if (preg_match($reg_users, $path))
                             <span class="sr-only">(current)</span>
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item @if (preg_match($reg_posts, $path)) active @endif">
-                    <a class="nav-link" href="{{ secure_url('posts') }}">
+                    <a class="nav-link" href="{{ url('posts') }}">
                         {{ __('Posts') }}
                         @if (preg_match($reg_posts, $path))
                             <span class="sr-only">(current)</span>
@@ -66,7 +66,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdown-user">
-                            <a class="dropdown-item" href="{{ secure_url('users/' . Auth::user()->id) }}">
+                            <a class="dropdown-item" href="{{ url('users/' . Auth::user()->id) }}">
                                 {{ __('Profile') }}
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -84,12 +84,12 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdown-lang">
                         @if (!App::isLocale('en'))
-                            <a class="dropdown-item" href="{{ secure_url('locale/en') }}">
+                            <a class="dropdown-item" href="{{ url('locale/en') }}">
                                 {{ __('locale.en') }}
                             </a>
                         @endif
                         @if (!App::isLocale('ja'))
-                            <a class="dropdown-item" href="{{ secure_url('locale/ja') }}">
+                            <a class="dropdown-item" href="{{ url('locale/ja') }}">
                                 {{ __('locale.ja') }}
                             </a>
                         @endif
@@ -105,6 +105,6 @@
     <!-- JavaScript -->
     <!-- jQuery, Tether, Bootstrap4 -->
     <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.2/dist/jquery.min.js,npm/tether@1.4/dist/js/tether.min.js,npm/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js"></script>
-    <script src="{{ secure_asset('js/common.js') }}"></script>
+    <script src="{{ asset('js/common.js') }}"></script>
 </body>
 </html>

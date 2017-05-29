@@ -8,7 +8,7 @@
 
 @section('content')
 <h1>{{ $title }}</h1>
-<form action="{{ secure_url('posts') }}" method="post">
+<form action="{{ url('posts') }}" method="post">
     {{ csrf_field() }}
     {{ method_field('POST') }}
     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

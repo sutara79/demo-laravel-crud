@@ -14,6 +14,13 @@ class UsersTableSeeder extends Seeder
         // Use Faker
         // https://github.com/fzaninotto/Faker
         $faker = Faker\Factory::create('ja_JP');
+        DB::table('users')->insert([
+            'name' => 'sutara79',
+            'email' => 'toumin.m7@gmail.com',
+            'password' => bcrypt('1234'),
+            'created_at' => $faker->dateTime(),
+            'updated_at' => $faker->dateTime(),
+        ]);
         for ($i = 0; $i < 20; $i++)
         {
             DB::table('users')->insert([

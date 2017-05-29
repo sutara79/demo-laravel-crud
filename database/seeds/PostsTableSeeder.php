@@ -14,7 +14,7 @@ class PostsTableSeeder extends Seeder
         // Use Faker
         // https://github.com/fzaninotto/Faker
         $faker = Faker\Factory::create('ja_JP');
-        for ($i = 0; $i < 20; $i++)
+        for ($i = 0; $i < 40; $i++)
         {
             DB::table('posts')->insert([
                 'title' => $faker->text(20),

@@ -1,7 +1,13 @@
+@php
+    $title = __('Login');
+@endphp
+
 @extends('layouts.app')
 
+@section('title', $title)
+
 @section('content')
-<h1>{{ __('Login') }}</h1>
+<h1>{{ $title }}</h1>
 <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
     {{ csrf_field() }}
 

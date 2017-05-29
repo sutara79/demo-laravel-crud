@@ -1,7 +1,13 @@
+@php
+    $title = __('Register');
+@endphp
+
 @extends('layouts.app')
 
+@section('title', $title)
+
 @section('content')
-<h1>{{ __('Register') }}</h1>
+<h1>{{ $title }}</h1>
 <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
     {{ csrf_field() }}
 

@@ -2,6 +2,7 @@
     $path = Request::path();
     $reg_users = '/^users$|^users\//';
     $reg_posts = '/^posts$|^posts\//';
+    $reg_login = '/^login$|^password\//';
 @endphp
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
@@ -43,14 +44,20 @@
             </ul>
             <ul class="navbar-nav my-2 my-lg-0">
                 @if (Auth::guest())
-                    <li class="nav-item">
+                    <li class="nav-item @if (preg_match($reg_login, $path)) active @endif">
                         <a class="nav-link" href="{{ route('login') }}">
                             {{ __('Login') }}
+                            @if (preg_match($reg_login, $path))
+                                <span class="sr-only">(current)</span>
+                            @endif
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @if ($path == 'register') active @endif">
                         <a class="nav-link" href="{{ route('register') }}">
                             {{ __('Register') }}
+                            @if ($path == 'register')
+                                <span class="sr-only">(current)</span>
+                            @endif
                         </a>
                     </li>
                 @else

@@ -20,6 +20,8 @@ class UsersTableSeeder extends Seeder
                 'name' => $faker->unique()->userName(),
                 'email' => $faker->unique()->email(),
                 'password' => bcrypt('1234'),
+                'created_at' => $faker->dateTime(),
+                'updated_at' => $faker->dateTime(),
             ]);
         }
     }

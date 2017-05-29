@@ -1,6 +1,7 @@
 @php
     $path = Request::path();
     $reg_users = '/^users$|^users\//';
+    $reg_posts = '/^posts$|^posts\//';
 @endphp
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
@@ -23,18 +24,18 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item @if ($path == '/') active @endif">
-                    <a class="nav-link" href="{{ secure_url('/') }}">
-                        Home
-                        @if ($path == '/')
+                <li class="nav-item @if (preg_match($reg_users, $path)) active @endif">
+                    <a class="nav-link" href="{{ secure_url('users') }}">
+                        {{ __('Users') }}
+                        @if (preg_match($reg_users, $path))
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>
                 </li>
-                <li class="nav-item @if (preg_match($reg_users, $path)) active @endif">
-                    <a class="nav-link" href="{{ secure_url('users') }}">
-                        Users
-                        @if (preg_match($reg_users, $path))
+                <li class="nav-item @if (preg_match($reg_posts, $path)) active @endif">
+                    <a class="nav-link" href="{{ secure_url('posts') }}">
+                        {{ __('Posts') }}
+                        @if (preg_match($reg_posts, $path))
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>

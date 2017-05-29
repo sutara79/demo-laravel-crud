@@ -1,11 +1,34 @@
 {
     "My practice for basic CRUD of Laravel 5.4 on Heroku.": "Laravel 5.4の基本的なCRUDをHerokuで公開する練習です。",
     "Unfinished.": "未完成。",
-    "Login": "ログイン",
-    "Logout": "ログアウト",
-    "Profile": "プロフィール",
-    "Register": "ユーザー登録",
+
     "Delete": "削除",
     "Edit": "編集",
-    "Create": "新規作成"
+    "Create": "新規作成",
+    "Submit": "送信",
+
+    "Y-m-d H:i:s": "Y年m月d日 H:i:s",
+
+    "Posts": "記事",
+    "Post": "記事",
+    "Create Post": "記事を投稿する",
+    "Author": "著者",
+    "Title": "題名",
+    "Body": "本文",
+    "Created": "作成時刻",
+    "Modified": "更新時刻",
+
+    "Users": "ユーザー",
+    "User": "ユーザー",
+    "Profile": "プロフィール",
+    "Name": "ユーザー名",
+    "Email": "メールアドレス",
+    "Password": "パスワード",
+    "Confirm Password": "パスワード (確認用)",
+
+    "Login": "ログイン",
+    "Logout": "ログアウト",
+    "Register": "ユーザー登録",
+    "Remember Me": "ログインしたままにする",
+    "Forgot Your Password?": "パスワードをお忘れですか?"
 }

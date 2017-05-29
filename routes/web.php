@@ -21,6 +21,9 @@ Route::group(['middleware' => 'locale'], function () {
     // User
     Route::resource('users', 'UserController');
 
+    // Post
+    Route::resource('posts', 'PostController');
+
     // Foo
     Route::get('foo', function () {
         return 'Foo!';

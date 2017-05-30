@@ -1,5 +1,5 @@
 @php
-    $title = 'Users';
+    $title = __('Users');
 @endphp
 
 @extends('../layouts/app')
@@ -19,8 +19,8 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>{{ __('Name') }}</th>
+                <th>{{ __('Email') }}</th>
                 <th></th>
             </tr>
         </thead>

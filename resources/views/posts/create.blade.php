@@ -25,7 +25,7 @@
     <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
         <label for="body">{{ __('Body') }}</label>
         <div>
-            <textarea id="body" class="form-control" name="body" value="{{ old('body') }}" rows="8" required></textarea>
+            <textarea id="body" class="form-control" name="body" rows="8" required>{{ old('body') }}</textarea>
 
             @if ($errors->has('body'))
                 <span class="help-block">

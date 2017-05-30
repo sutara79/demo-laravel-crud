@@ -8,6 +8,24 @@ My practice for basic CRUD of Laravel 5.4 with Heroku.
 https://sutara79-laravel.herokuapp.com/
 
 
+## Feature
+- All visitors can read all posts.
+- All visitors can read all users' profile except email address.
+- All visitors can sign up.
+- Each the logged in user can post, edit and delete.
+- The admin can edit and delete all users' accounts and posts.
+    - Admin:
+        - id: 1
+        - name: sutara79
+        - email: toumin.m7@gmail.com
+        - password: 1234
+    - User:
+        - id: 2
+        - name: foo1
+        - email: foo1@foo.com
+        - password: 1234
+
+
 ## License
 [MIT](http://www.opensource.org/licenses/mit-license.php)
 

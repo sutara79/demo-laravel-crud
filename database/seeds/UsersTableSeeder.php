@@ -21,7 +21,14 @@ class UsersTableSeeder extends Seeder
             'created_at' => $faker->dateTime(),
             'updated_at' => $faker->dateTime(),
         ]);
-        for ($i = 0; $i < 20; $i++)
+        DB::table('users')->insert([
+            'name' => 'foo1',
+            'email' => 'foo1@foo.com',
+            'password' => bcrypt('1234'),
+            'created_at' => $faker->dateTime(),
+            'updated_at' => $faker->dateTime(),
+        ]);
+        for ($i = 0; $i < 18; $i++)
         {
             DB::table('users')->insert([
                 'name' => $faker->unique()->userName(),

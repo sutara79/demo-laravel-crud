@@ -12,6 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"><!-- CSRF Token -->
     <title>@if ($path != '/') @yield('title') | @endif{{ env('APP_NAME') }}</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="{{ env('APP_NAME') }}">
+    <meta property="og:description" content="{{ __('My practice for basic CRUD of Laravel 5.4 on Heroku.') }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:player" content="@sutara_lumpur">
+    <meta property="fb:admins" content="adminID100000634897828">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-alpha.6/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
 </head>
@@ -25,14 +32,6 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item @if (preg_match($reg_users, $path)) active @endif">
-                    <a class="nav-link" href="{{ url('users') }}">
-                        {{ __('Users') }}
-                        @if (preg_match($reg_users, $path))
-                            <span class="sr-only">(current)</span>
-                        @endif
-                    </a>
-                </li>
                 <li class="nav-item @if (preg_match($reg_posts, $path)) active @endif">
                     <a class="nav-link" href="{{ url('posts') }}">
                         {{ __('Posts') }}
@@ -41,8 +40,23 @@
                         @endif
                     </a>
                 </li>
+                @if (isAdmin())
+                    <li class="nav-item @if (preg_match($reg_users, $path)) active @endif">
+                        <a class="nav-link" href="{{ url('users') }}">
+                            {{ __('Users') }}
+                            @if (preg_match($reg_users, $path))
+                                <span class="sr-only">(current)</span>
+                            @endif
+                        </a>
+                    </li>
+                @endif
             </ul>
             <ul class="navbar-nav my-2 my-lg-0">
+                <li class="nav-item">
+                    <a href="{{ url('posts/create') }}" class="btn btn-success">
+                        {{ __('New Post') }}
+                    </a>
+                </li>
                 @if (Auth::guest())
                     <li class="nav-item @if (preg_match($reg_login, $path)) active @endif">
                         <a class="nav-link" href="{{ route('login') }}">

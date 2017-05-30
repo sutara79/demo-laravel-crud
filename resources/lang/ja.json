@@ -1,6 +1,13 @@
 {
     "My practice for basic CRUD of Laravel 5.4 on Heroku.": "Laravel 5.4の基本的なCRUDをHerokuで公開する練習です。",
     "Unfinished.": "未完成。",
+    "Feature": "機能",
+    "All visitors can read all posts.": "訪問者はすべての投稿を読めます。",
+    "All visitors can read all users' profile except email address.": "訪問者はメールアドレスを除く会員のプロフィールを読めます。",
+    "All visitors can sign up.": "訪問者は会員登録できます。",
+    "Each the logged in user can post, edit and delete.": "会員は記事の投稿、編集、削除ができます。",
+    "The admin can edit and delete all users' accounts and posts.": "管理者は会員のアカウントと投稿を編集、削除できます。",
+    "Admin": "管理者",
 
     "Delete": "削除",
     "Edit": "編集",
@@ -12,11 +19,11 @@
     "Posts": "記事",
     "Post": "記事",
     "Create Post": "記事を投稿する",
-    "Author": "著者",
+    "Author": "投稿者",
     "Title": "題名",
     "Body": "本文",
     "Created": "作成時刻",
-    "Modified": "更新時刻",
+    "Updated": "更新時刻",
 
     "Users": "ユーザー",
     "User": "ユーザー",
@@ -26,6 +33,7 @@
     "Password": "パスワード",
     "Confirm Password": "パスワード (確認用)",
 
+    "New Post": "投稿する",
     "Login": "ログイン",
     "Logout": "ログアウト",
     "Register": "ユーザー登録",

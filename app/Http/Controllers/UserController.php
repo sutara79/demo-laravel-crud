@@ -7,6 +7,15 @@ use App\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        // TODO: admin ミドルウェアを作る
+        // $this->middleware('admin')->only(['index', 'destroy']);
+
+        // TODO: edit, updateは、自身のみを有効とする
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update']);
+    }
+
     /**
      * Display a listing of the resource.
      *

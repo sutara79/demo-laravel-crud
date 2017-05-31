@@ -12,7 +12,7 @@ class UserController extends Controller
         // TODO: admin ミドルウェアを作る
         // $this->middleware('admin')->only(['index', 'destroy']);
 
-        // TODO: edit, updateは、自身のみを有効とする
+        // TODO: edit, updateは、自分のプロフィールのみを有効とする
         $this->middleware('auth')->only(['create', 'store', 'edit', 'update']);
     }
 

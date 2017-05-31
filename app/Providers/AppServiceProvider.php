@@ -29,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
         if (\DB::getDriverName() == 'sqlite') {
             \DB::statement(\DB::raw('PRAGMA foreign_keys=1'));
         }
+
+        // Set global variable.
+        // See https://stackoverflow.com/questions/28356193/
+        \Config::set(['admin_id' => 1]); // Use at app/Helpers/myHelper.php
     }
 
     /**

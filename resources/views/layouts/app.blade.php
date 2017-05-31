@@ -6,19 +6,25 @@
 @endphp
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"><!-- CSRF Token -->
     <title>@if ($path != '/') @yield('title') | @endif{{ env('APP_NAME') }}</title>
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:site_name" content="{{ env('APP_NAME') }}">
-    <meta property="og:description" content="{{ __('My practice for basic CRUD of Laravel 5.4 on Heroku.') }}">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:player" content="@sutara_lumpur">
-    <meta property="fb:admins" content="adminID100000634897828">
+
+    <!-- Open Graph protocol -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ env('APP_NAME') }}" />
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta property="og:image" content="{{ asset('img/og_image.png') }}" />
+    <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
+    <meta property="og:description" content="{{ __('My practice for basic CRUD of Laravel 5.4 on Heroku.') }}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:player" content="@sutara_lumpur" />
+    <meta property="fb:admins" content="100000634897828" />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-alpha.6/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
 </head>

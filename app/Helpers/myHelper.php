@@ -7,7 +7,7 @@ if (! function_exists('isAdmin')) {
      */
     function isAdmin()
     {
-        return Auth::id() === 1;
+        return Auth::id() === Config::get('admin_id');
     }
 }
 
@@ -20,6 +20,6 @@ if (! function_exists('isOneselfOrAdmin')) {
      */
     function isOneselfOrAdmin($id)
     {
-        return Auth::id() === $id || Auth::id() === 1;
+        return Auth::id() === $id || Auth::id() === Config::get('admin_id');
     }
 }

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\CustomPasswordReset;
 
 class User extends Authenticatable
 {
@@ -29,9 +30,22 @@ class User extends Authenticatable
 
     /**
      * Relation: User has many Posts.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function posts()
     {
         return $this->hasMany('App\Post')->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomPasswordReset($token));
     }
 }

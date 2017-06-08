@@ -33,6 +33,10 @@
     "Password": "パスワード",
     "Confirm Password": "パスワード (確認用)",
 
+    "Reset Password": "パスワード再設定",
+    "Click link below and reset password.": "下記のURLにアクセスして、パスワードを再設定してください。",
+    "If you did not request a password reset, no further action is required.": "このメールに心当たりがない場合は、このまま削除してください。",
+
     "New Post": "投稿する",
     "Login": "ログイン",
     "Logout": "ログアウト",

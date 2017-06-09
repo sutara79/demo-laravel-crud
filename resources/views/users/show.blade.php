@@ -73,4 +73,6 @@
         </tbody>
     </table>
 </div>
+{{ $user->posts->links() }}
+
 @endsection

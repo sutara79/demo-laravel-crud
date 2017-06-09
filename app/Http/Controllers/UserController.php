@@ -9,10 +9,10 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        // TODO: admin ミドルウェアを作る
+        /** @todo admin ミドルウェアを作る */
         // $this->middleware('admin')->only(['index', 'destroy']);
 
-        // TODO: edit, updateは、自分のプロフィールのみを有効とする
+        /** @todo edit, updateは、自分のプロフィールのみを有効とする */
         $this->middleware('auth')->only(['create', 'store', 'edit', 'update']);
     }
 
@@ -63,6 +63,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+        $user->posts = $user->posts()->paginate(5);
         return view('users.show', ['user' => $user]);
     }
 

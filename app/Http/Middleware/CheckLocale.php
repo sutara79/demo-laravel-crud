@@ -6,6 +6,9 @@ use Closure;
 
 class CheckLocale
 {
+    /** @var array Langueges this app deal with. */
+    private $langs = ['ja', 'en'];
+
     /**
      * Set locale from session or config.
      *
@@ -15,16 +18,28 @@ class CheckLocale
      */
     public function handle($request, Closure $next)
     {
-        // Get locale from session.
-        $locale = session('locale');
-
-        // If session does not exist,
-        // get Accept-Language of browser.
-        if (!$locale) {
-            $locale = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-            $locale = substr($locale, 0, 2);
-            session(['locale' => $locale]);
+        if (isset($_GET['lang'])) {
+            // Get locale from GET parameter.
+            $locale = $_GET['lang'];
         }
+        else {
+            // Get locale from session.
+            $locale = session('locale');
+
+            // If session does not exist, get Accept-Language of browser.
+            if (!$locale) {
+                $locale = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+                $locale = substr($locale, 0, 2);
+            }
+        }
+
+        // Check if this app can deal with $locale.
+        if (!in_array($locale, $this->langs, true)) {
+            $locale = config('app.fallback_locale');
+        }
+
+        // Save locale to session.
+        session(['locale' => $locale]);
 
         \App::setLocale($locale);
         return $next($request);

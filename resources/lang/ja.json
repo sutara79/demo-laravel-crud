@@ -33,6 +33,7 @@
     "Password": "パスワード",
     "Confirm Password": "パスワード (確認用)",
 
+    "Send Password Reset Link": "パスワード再設定用のリンクを送る",
     "Reset Password": "パスワード再設定",
     "Click link below and reset password.": "下記のURLにアクセスして、パスワードを再設定してください。",
     "If you did not request a password reset, no further action is required.": "このメールに心当たりがない場合は、このまま削除してください。",

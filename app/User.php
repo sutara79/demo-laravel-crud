@@ -48,4 +48,13 @@ class User extends Authenticatable
     {
         $this->notify(new CustomPasswordReset($token));
     }
+
+    /**
+     * Whether the user is admin.
+     *
+     * @return boolean
+     */
+    public function isAdmin() {
+        return $this->id === \Config::get('admin_id');
+    }
 }

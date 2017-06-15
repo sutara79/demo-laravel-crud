@@ -9,7 +9,7 @@
 @section('content')
 <h1>{{ $title }}</h1>
 
-@if (isOneselfOrAdmin($user->id))
+@can('edit', $user)
     <div>
         <a href="{{ url('users/' . $user->id . '/edit') }}" class="btn btn-primary">
             {{ __('Edit') }}
@@ -19,17 +19,17 @@
             @slot('id', $user->id)
         @endcomponent
     </div>
-@endif
+@endcan
 
 <dl>
     <dt>ID</dt>
     <dd>{{ $user->id }}</dd>
     <dt>{{ __('Name') }}</dt>
     <dd>{{ $user->name }}</dd>
-    @if (isOneselfOrAdmin($user->id))
+    @can('edit', $user)
         <dt>{{ __('Email') }}</dt>
         <dd>{{ $user->email }}</dd>
-    @endif
+    @endcan
 </dl>
 
 <h2>{{ __('Posts') }}</h2>
@@ -41,9 +41,9 @@
                 <th>{{ __('Body') }}</th>
                 <th>{{ __('Created') }}</th>
                 <th>{{ __('Updated') }}</th>
-                @if (isOneselfOrAdmin($user->id))
+                @can('edit', $user)
                     <th></th>
-                @endif
+                @endcan
             </tr>
         </thead>
         <tbody>
@@ -57,7 +57,7 @@
                     <td>{{ $post->body }}</td>
                     <td>{{ $post->created_at->format('Y年m月d日 H:i:s') }}</td>
                     <td>{{ $post->updated_at->format('Y年m月d日 H:i:s') }}</td>
-                    @if (isOneselfOrAdmin($user->id))
+                    @can('edit', $user)
                         <td nowrap>
                             <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">
                                 {{ __('Edit') }}
@@ -67,7 +67,7 @@
                                 @slot('id', $post->id)
                             @endcomponent
                         </td>
-                    @endif
+                    @endcan
                  </tr>
             @endforeach
         </tbody>

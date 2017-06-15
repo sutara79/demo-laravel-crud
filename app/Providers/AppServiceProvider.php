@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Set global variable.
         // See https://stackoverflow.com/questions/28356193/
-        \Config::set(['admin_id' => 1]); // Use at app/Helpers/myHelper.php
+        \Config::set(['admin_id' => 1]); // Use at app/User.php
     }
 
     /**

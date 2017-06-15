@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use Auth;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -45,32 +45,31 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->user_id = Auth::id();
+        $post->user_id = \Auth::id();
         $post->save();
-        return redirect("posts/{$post->id}");
+        return redirect('posts/' . $post->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::findOrFail($id);
         return view('posts.show', ['post' => $post]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::findOrFail($id);
+        $this->authorize('edit', $post);
         return view('posts.edit', ['post' => $post]);
     }
 
@@ -78,27 +77,28 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        $post = Post::find($id);
+        $this->authorize('edit', $post);
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
-        return redirect("posts/{$id}");
+        return redirect('posts/' . $post->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        Post::destroy($id);
+        $this->authorize('edit', $post);
+        $post->delete();
         return redirect('posts');
     }
 }

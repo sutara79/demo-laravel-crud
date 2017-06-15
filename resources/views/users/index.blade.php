@@ -20,8 +20,6 @@
             <tr>
                 <th>ID</th>
                 <th>{{ __('Name') }}</th>
-                <th>{{ __('Email') }}</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -32,16 +30,6 @@
                         <a href="{{ url("users/{$user->id}") }}">
                             {{ $user->name }}
                         </a>
-                    </td>
-                    <td>{{ $user->email }}</td>
-                    <td>
-                        <a href="{{ url("users/{$user->id}/edit") }}" class="btn btn-primary">
-                            {{ __('Edit') }}
-                        </a>
-                        @component('form-del')
-                            @slot('table', 'users')
-                            @slot('id', $user->id)
-                        @endcomponent
                     </td>
                  </tr>
             @endforeach

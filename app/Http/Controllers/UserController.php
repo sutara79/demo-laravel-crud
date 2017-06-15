@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-        /** @todo admin ミドルウェアを作る */
-        // $this->middleware('admin')->only(['index', 'destroy']);
-
-        /** @todo edit, updateは、自分のプロフィールのみを有効とする */
-        $this->middleware('auth')->only(['create', 'store', 'edit', 'update']);
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     /**
@@ -23,8 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $users = User::all();
-        $users = User::paginate(5);
+        $users = User::paginate(10);
         return view('users.index', ['users' => $users]);
     }
 
@@ -51,18 +47,17 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->save();
-        return redirect("users/{$user->id}");
+        return redirect('users/' . $user->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::findOrFail($id);
         $user->posts = $user->posts()->paginate(5);
         return view('users.show', ['user' => $user]);
     }
@@ -70,12 +65,12 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::findOrFail($id);
+        $this->authorize('edit', $user);
         return view('users.edit', ['user' => $user]);
     }
 
@@ -83,27 +78,28 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $user = User::find($id);
+        $this->authorize('edit', $user);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
-        return redirect("users/{$id}");
+        return redirect('users/' . $user->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        User::destroy($id);
+        $this->authorize('edit', $user);
+        $user->delete();
         return redirect('users');
     }
 }

@@ -1,29 +1,4 @@
 <?php
-if (! function_exists('isAdmin')) {
-    /**
-     * Whether the logged in user is admin.
-     *
-     * @return boolean
-     */
-    function isAdmin()
-    {
-        return Auth::id() === Config::get('admin_id');
-    }
-}
-
-if (! function_exists('isOneselfOrAdmin')) {
-    /**
-     * Whether the logged in user's ID matches $id, or the logged in user is admin.
-     *
-     * @param int $id
-     * @return boolean
-     */
-    function isOneselfOrAdmin($id)
-    {
-        return Auth::id() === $id || Auth::id() === Config::get('admin_id');
-    }
-}
-
 if (! function_exists('urlChangeLocale')) {
     /**
      * Get URL to change locale using App\Http\Middleware\CheckLocale.
@@ -49,7 +24,7 @@ if (! function_exists('urlChangeLocale')) {
         $query = implode('&', $paramsJoined);
 
         // Build URL
-        $url = $urlParsed['scheme'] . '://' .
+        $url = ((!App::environment('local')) ? 'https' : $urlParsed['scheme']) . '://' .
                $urlParsed['host'] .
                ((isset($urlParsed['path'])) ? $urlParsed['path'] : '') .
                '?' . $query;

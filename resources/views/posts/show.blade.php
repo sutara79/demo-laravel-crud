@@ -9,7 +9,7 @@
 @section('content')
 <h1>{{ $title }}</h1>
 
-@if (isOneselfOrAdmin($post->user->id))
+@can('edit', $post)
     <div class="edit">
         <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">
             {{ __('Edit') }}
@@ -19,7 +19,8 @@
             @slot('id', $post->id)
         @endcomponent
     </div>
-@endif
+@endcan
+
 <dl>
     <dt>{{ __('Author') }}:</dt>
     <dd>

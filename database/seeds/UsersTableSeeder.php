@@ -28,8 +28,7 @@ class UsersTableSeeder extends Seeder
             'created_at' => $faker->dateTime(),
             'updated_at' => $faker->dateTime(),
         ]);
-        for ($i = 0; $i < 18; $i++)
-        {
+        for ($i = 0; $i < 18; $i++) {
             DB::table('users')->insert([
                 'name' => $faker->unique()->userName(),
                 'email' => $faker->unique()->email(),

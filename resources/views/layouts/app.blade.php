@@ -46,16 +46,14 @@
                         @endif
                     </a>
                 </li>
-                @if (isAdmin())
-                    <li class="nav-item @if (preg_match($reg_users, $path)) active @endif">
-                        <a class="nav-link" href="{{ url('users') }}">
-                            {{ __('Users') }}
-                            @if (preg_match($reg_users, $path))
-                                <span class="sr-only">(current)</span>
-                            @endif
-                        </a>
-                    </li>
-                @endif
+                <li class="nav-item @if (preg_match($reg_users, $path)) active @endif">
+                    <a class="nav-link" href="{{ url('users') }}">
+                        {{ __('Users') }}
+                        @if (preg_match($reg_users, $path))
+                            <span class="sr-only">(current)</span>
+                        @endif
+                    </a>
+                </li>
             </ul>
             <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item">
@@ -99,7 +97,7 @@
                     </li>
                 @endif
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown-lang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown-lang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ __('locale.' . App::getLocale()) }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdown-lang">

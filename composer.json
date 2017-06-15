@@ -8,14 +8,14 @@
         "php": ">=5.6.4",
         "ext-intl": "^1.1",
         "barryvdh/laravel-debugbar": "^2.3",
-        "fzaninotto/faker": "~1.4",
+        "fzaninotto/faker": "^1.6",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0"
     },
     "require-dev": {
+        "heroku/heroku-buildpack-php": "^121.0",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7",
-        "heroku/heroku-buildpack-php": "*"
+        "phpunit/phpunit": "~5.7"
     },
     "autoload": {
         "classmap": [

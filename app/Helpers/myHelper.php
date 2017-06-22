@@ -32,3 +32,18 @@ if (! function_exists('urlChangeLocale')) {
         return $url;
     }
 }
+
+if (! function_exists('isCurrentController')) {
+    /**
+     * Check if the current controller's name matches given string.
+     *
+     * @param string $names Comma separated controller's name
+     * @return bool
+     */
+    function isCurrentController($names)
+    {
+        $names = array_map('trim', explode(',', $names));
+        $current = explode('.', Route::currentRouteName())[0];
+        return in_array($current, $names, true);
+    }
+}

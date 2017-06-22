@@ -9,11 +9,14 @@
 @section('content')
 <h1>{{ $title }}</h1>
 
-<div>
-    <a href="{{ url('users/create') }}" class="btn btn-primary">
-        {{ __('Create') }}
-    </a>
-</div>
+@if (Auth::check() && Auth::user()->isAdmin())
+    <div>
+        <a href="{{ url('users/create') }}" class="btn btn-primary">
+            {{ __('Create') }}
+        </a>
+    </div>
+@endif
+
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>

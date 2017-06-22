@@ -1,9 +1,3 @@
-@php
-    $path = Request::path();
-    $reg_users = '/^users$|^users\//';
-    $reg_posts = '/^posts$|^posts\//';
-    $reg_login = '/^login$|^password\//';
-@endphp
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
@@ -11,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"><!-- CSRF Token -->
-    <title>@if ($path != '/') @yield('title') | @endif{{ env('APP_NAME') }}</title>
+    <title>@if (!isCurrentController('')) @yield('title') | @endif{{ env('APP_NAME') }}</title>
 
     <!-- Open Graph protocol -->
     <meta property="og:type" content="website" />
@@ -38,18 +32,18 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item @if (preg_match($reg_posts, $path)) active @endif">
+                <li class="nav-item @if (isCurrentController('posts')) active @endif">
                     <a class="nav-link" href="{{ url('posts') }}">
                         {{ __('Posts') }}
-                        @if (preg_match($reg_posts, $path))
+                        @if (isCurrentController('posts'))
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>
                 </li>
-                <li class="nav-item @if (preg_match($reg_users, $path)) active @endif">
+                <li class="nav-item @if (isCurrentController('users')) active @endif">
                     <a class="nav-link" href="{{ url('users') }}">
                         {{ __('Users') }}
-                        @if (preg_match($reg_users, $path))
+                        @if (isCurrentController('users'))
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>
@@ -62,18 +56,18 @@
                     </a>
                 </li>
                 @if (Auth::guest())
-                    <li class="nav-item @if (preg_match($reg_login, $path)) active @endif">
+                    <li class="nav-item @if (isCurrentController('login, password')) active @endif">
                         <a class="nav-link" href="{{ route('login') }}">
                             {{ __('Login') }}
-                            @if (preg_match($reg_login, $path))
+                            @if (isCurrentController('login, password'))
                                 <span class="sr-only">(current)</span>
                             @endif
                         </a>
                     </li>
-                    <li class="nav-item @if ($path == 'register') active @endif">
+                    <li class="nav-item @if (isCurrentController('register')) active @endif">
                         <a class="nav-link" href="{{ route('register') }}">
                             {{ __('Register') }}
-                            @if ($path == 'register')
+                            @if (isCurrentController('register'))
                                 <span class="sr-only">(current)</span>
                             @endif
                         </a>

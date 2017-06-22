@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,16 +35,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-
-    /**
-     * Define redirect location
-     *
-     * @return string
-     * @todo 直前のページが別ドメインの場合を除いて、直前のページへ移動する
-     */
-    protected function redirectTo()
-    {
-        return '/';
     }
 }

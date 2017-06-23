@@ -1,9 +1,13 @@
+@php
+    $title = env('APP_NAME');
+@endphp
+
 @extends('layouts.app')
 
 @section('title', 'demo-laravel-crud')
 
 @section('content')
-<h1>demo-laravel-crud</h1>
+<h1>{{ $title }}</h1>
 <p>
     {{ __('My practice for basic CRUD of Laravel 5.4 on Heroku.') }}<br>
     {{ __('Unfinished.') }}

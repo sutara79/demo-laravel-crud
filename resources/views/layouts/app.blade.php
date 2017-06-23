@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"><!-- CSRF Token -->
-    <title>@if (!isCurrentController('')) @yield('title') | @endif{{ env('APP_NAME') }}</title>
+    <title>@if (!isCurrentController('')){{ $title }} | @endif{{ env('APP_NAME') }}</title>
 
     <!-- Open Graph protocol -->
     <meta property="og:type" content="website" />
@@ -111,6 +111,12 @@
         </div>
     </nav>
     <div class="container">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
         @yield('content')
     </div>
 

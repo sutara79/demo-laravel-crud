@@ -4,16 +4,8 @@
 
 @extends('layouts.app')
 
-@section('title', $title)
-
 @section('content')
 <h1>{{ $title }}</h1>
-
-@if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
 
 <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
     {{ csrf_field() }}
@@ -64,7 +56,7 @@
     <div class="form-group">
         <div class="col-md-6 col-md-offset-4">
             <button type="submit" class="btn btn-primary">
-                Reset Password
+                {{ __('Reset Password') }}
             </button>
         </div>
     </div>

@@ -25,6 +25,14 @@
     "Created": "作成時刻",
     "Updated": "更新時刻",
 
+    "Posted new article.": "記事を投稿しました。",
+    "Updated an article.": "記事を更新しました。",
+    "Deleted an article.": "記事を削除しました。",
+
+    "Created new user.": "ユーザーを追加しました。",
+    "Updated an user.": "ユーザー情報を更新しました。",
+    "Deleted an user.": "ユーザーを削除しました。",
+
     "Users": "ユーザー",
     "User": "ユーザー",
     "Profile": "プロフィール",
@@ -43,5 +51,9 @@
     "Logout": "ログアウト",
     "Register": "ユーザー登録",
     "Remember Me": "ログインしたままにする",
-    "Forgot Your Password?": "パスワードをお忘れですか?"
+    "Forgot Your Password?": "パスワードをお忘れですか?",
+
+    "You logged in.": "ログインしました。",
+    "You logged out.": "ログアウトしました。",
+    "You were registered.": "ユーザー登録が完了しました。"
 }

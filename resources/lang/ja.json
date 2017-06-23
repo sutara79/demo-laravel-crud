@@ -30,8 +30,12 @@
     "Deleted an article.": "記事を削除しました。",
 
     "Created new user.": "ユーザーを追加しました。",
-    "Updated an user.": "ユーザー情報を更新しました。",
-    "Deleted an user.": "ユーザーを削除しました。",
+    "Updated a user.": "ユーザー情報を更新しました。",
+    "Deleted a user.": "ユーザーを削除しました。",
+
+    "Confirm delete": "削除の確認",
+    "Cancel": "やめる",
+    "Are you sure to delete?": "本当に削除してもよろしいですか?",
 
     "Users": "ユーザー",
     "User": "ユーザー",

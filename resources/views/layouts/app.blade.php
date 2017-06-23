@@ -123,6 +123,5 @@
     <!-- JavaScript -->
     <!-- jQuery, Tether, Bootstrap4 -->
     <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.2/dist/jquery.min.js,npm/tether@1.4/dist/js/tether.min.js,npm/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/common.js') }}"></script>
 </body>
 </html>

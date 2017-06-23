@@ -13,8 +13,9 @@
             {{ __('Edit') }}
         </a>
         @component('form-del')
-            @slot('table', 'posts')
+            @slot('controller', 'posts')
             @slot('id', $post->id)
+            @slot('name', $post->title)
         @endcomponent
     </div>
 @endcan

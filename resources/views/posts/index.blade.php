@@ -32,8 +32,8 @@
                         </a>
                     </td>
                     <td>{{ $post->body }}</td>
-                    <td>{{ $post->created_at->format(__('Y-m-d H:i:s')) }}</td>
-                    <td>{{ $post->updated_at->format(__('Y-m-d H:i:s')) }}</td>
+                    <td>{{ myDate($post->created_at) }}</td>
+                    <td>{{ myDate($post->updated_at) }}</td>
                  </tr>
             @endforeach
         </tbody>

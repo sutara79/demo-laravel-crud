@@ -51,7 +51,7 @@ if (! function_exists('myIsCurrentController')) {
 /** @todo Complete this function */
 if (! function_exists('myDate')) {
     /**
-     * Echo datetime set by user's timezone.
+     * Get datetime of user's timezone.
      *
      * @param string $date date
      * @return bool
@@ -68,6 +68,6 @@ if (! function_exists('myDate')) {
 
         // Return date
         $t->setTimeZone(new DateTimeZone($timezone));
-        return $t->format(__('Y-m-d H:i:s')),
+        return $t->format(__('Y-m-d H:i:s'));
     }
 }

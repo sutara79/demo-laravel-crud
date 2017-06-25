@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}"><!-- CSRF Token -->
-    <title>@if (!isCurrentController('')){{ $title }} | @endif{{ env('APP_NAME') }}</title>
+    <title>@if (!myIsCurrentController('')){{ $title }} | @endif{{ env('APP_NAME') }}</title>
 
     <!-- Open Graph protocol -->
     <meta property="og:type" content="website" />
@@ -32,18 +32,18 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item @if (isCurrentController('posts')) active @endif">
+                <li class="nav-item @if (myIsCurrentController('posts')) active @endif">
                     <a class="nav-link" href="{{ url('posts') }}">
                         {{ __('Posts') }}
-                        @if (isCurrentController('posts'))
+                        @if (myIsCurrentController('posts'))
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>
                 </li>
-                <li class="nav-item @if (isCurrentController('users')) active @endif">
+                <li class="nav-item @if (myIsCurrentController('users')) active @endif">
                     <a class="nav-link" href="{{ url('users') }}">
                         {{ __('Users') }}
-                        @if (isCurrentController('users'))
+                        @if (myIsCurrentController('users'))
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>
@@ -56,18 +56,18 @@
                     </a>
                 </li>
                 @if (Auth::guest())
-                    <li class="nav-item @if (isCurrentController('login, password')) active @endif">
+                    <li class="nav-item @if (myIsCurrentController('login, password')) active @endif">
                         <a class="nav-link" href="{{ route('login') }}">
                             {{ __('Login') }}
-                            @if (isCurrentController('login, password'))
+                            @if (myIsCurrentController('login, password'))
                                 <span class="sr-only">(current)</span>
                             @endif
                         </a>
                     </li>
-                    <li class="nav-item @if (isCurrentController('register')) active @endif">
+                    <li class="nav-item @if (myIsCurrentController('register')) active @endif">
                         <a class="nav-link" href="{{ route('register') }}">
                             {{ __('Register') }}
-                            @if (isCurrentController('register'))
+                            @if (myIsCurrentController('register'))
                                 <span class="sr-only">(current)</span>
                             @endif
                         </a>
@@ -96,12 +96,12 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdown-lang">
                         @if (!App::isLocale('en'))
-                            <a class="dropdown-item" href="{{ urlChangeLocale('en') }}">
+                            <a class="dropdown-item" href="{{ myLocaleUrl('en') }}">
                                 {{ __('locale.en') }}
                             </a>
                         @endif
                         @if (!App::isLocale('ja'))
-                            <a class="dropdown-item" href="{{ urlChangeLocale('ja') }}">
+                            <a class="dropdown-item" href="{{ myLocaleUrl('ja') }}">
                                 {{ __('locale.ja') }}
                             </a>
                         @endif

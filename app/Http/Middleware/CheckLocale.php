@@ -27,7 +27,7 @@ class CheckLocale
             $locale = session('locale');
 
             // If session does not exist, get Accept-Language of browser.
-            if (!$locale) {
+            if (!$locale && isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
                 $locale = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);
                 $locale = substr($locale, 0, 2);
             }

@@ -46,6 +46,8 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->lang = session('locale');
+        $user->timezone = 'UTC';
         $user->save();
         return redirect('users/' . $user->id)
                    ->with('status', __('Created new user.'));
@@ -87,6 +89,8 @@ class UserController extends Controller
         $this->authorize('edit', $user);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->lang = $request->lang;
+        $user->timezone = $request->timezone;
         $user->save();
         return redirect('users/' . $user->id)
                    ->with('status', __('Updated a user.'));

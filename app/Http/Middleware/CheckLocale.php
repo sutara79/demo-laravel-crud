@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\User;
+use Auth;
 
 class CheckLocale
 {
@@ -18,6 +20,8 @@ class CheckLocale
      */
     public function handle($request, Closure $next)
     {
+        $locale = '';
+
         if (isset($_GET['lang'])) {
             // Get locale from GET parameter.
             $locale = $_GET['lang'];

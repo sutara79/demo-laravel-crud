@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('timezone');
+            $table->string('lang')->default('en');
+            $table->string('timezone')->default('UTC');
             $table->rememberToken();
             $table->timestamps();
         });

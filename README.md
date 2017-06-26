@@ -1,5 +1,9 @@
 # demo-laravel-crud
 
+[![Build Status](https://travis-ci.org/sutara79/demo-laravel-crud.svg?branch=master)](https://travis-ci.org/sutara79/demo-laravel-crud)
+[![codecov](https://codecov.io/gh/sutara79/demo-laravel-crud/branch/master/graph/badge.svg)](https://codecov.io/gh/sutara79/demo-laravel-crud)
+
+
 My practice for basic CRUD of Laravel 5.4 with Heroku.  
 **Unfinished.**
 

@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'sutara79',
             'email' => 'toumin.m7@gmail.com',
             'password' => bcrypt('1234'),
+            'timezone' => 'Asia/Tokyo',
             'created_at' => $faker->dateTime(),
             'updated_at' => $faker->dateTime(),
         ]);
@@ -25,6 +26,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'foo1',
             'email' => 'foo1@foo.com',
             'password' => bcrypt('1234'),
+            'timezone' => 'Europe/Berlin',
             'created_at' => $faker->dateTime(),
             'updated_at' => $faker->dateTime(),
         ]);
@@ -33,6 +35,7 @@ class UsersTableSeeder extends Seeder
                 'name' => $faker->unique()->userName(),
                 'email' => $faker->unique()->email(),
                 'password' => bcrypt('1234'),
+                'timezone' => $faker->timezone(),
                 'created_at' => $faker->dateTime(),
                 'updated_at' => $faker->dateTime(),
             ]);

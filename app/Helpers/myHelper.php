@@ -53,14 +53,13 @@ if (! function_exists('myDate')) {
     /**
      * Get datetime of user's timezone.
      *
-     * @param string $date date
-     * @return bool
+     * @param string $date
+     * @return string
      */
     function myDate($date)
     {
-        // Set default date
-        date_default_timezone_set('UTC');
-        $t = new DateTime($date);
+        // Create DateTime object
+        $t = new DateTime($date, new DateTimeZone('UTC'));
 
         // Get user's timezone
         /** @todo Complete getting user's timezone */

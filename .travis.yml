@@ -4,7 +4,12 @@ php:
   - 7.0
 
 install:
-  - composer install
+  - cp .env.travis .env
+  - mysql -e 'create database homestead_test;'
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan key:generate
+  - php artisan migrate --seed
 
 # Test and get code coverage
 script:
@@ -13,4 +18,3 @@ script:
 # Submit coverage report to Codecov
 after_success:
   - bash <(curl -s https://codecov.io/bash) -cF php
- 

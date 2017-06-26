@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 7.0
+
+install:
+  - composer install
+
+# Test and get code coverage
+script:
+  - ./vendor/bin/phpunit --coverage-clover clover.xml
+
+# Submit coverage report to Codecov
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -cF php
+ 

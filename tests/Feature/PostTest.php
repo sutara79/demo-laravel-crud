@@ -14,7 +14,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testIndexPage()
+    public function testIndex()
     {
         $response = $this->get('users');
         $response->assertStatus(200);
@@ -25,7 +25,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testShowPage()
+    public function testShow()
     {
 
         $response = $this->get('users/1');

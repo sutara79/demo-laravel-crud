@@ -1,3 +1,7 @@
+sudo: required # for Laravel Dusk
+
+dist: trusty # for Laravel Dusk
+
 language: php
 
 php:
@@ -14,8 +18,16 @@ install:
   - php artisan key:generate
   - php artisan migrate --seed
 
+# Browser testing (Laravel Dusk)
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - ./vendor/laravel/dusk/bin/chromedriver-linux
+  - php artisan serve > /dev/null 2>&1 &
+
 # Test and get code coverage
 script:
+  - php artisan dusk
   - ./vendor/bin/phpunit --coverage-clover clover.xml
 
 # Submit coverage report to Codecov

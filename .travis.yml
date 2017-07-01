@@ -1,6 +1,6 @@
-sudo: required
+sudo: required # for Dusk
 language: php
-dist: trusty
+dist: trusty # for Dusk
 
 php:
   - 7.1
@@ -20,7 +20,7 @@ before_script:
   - php artisan key:generate
   - php artisan migrate --seed
   - php artisan serve &
-  - sleep 5
+  - sleep 3 # give xvfb and chromedriver some time to start
 
 # Test and get code coverage
 script:

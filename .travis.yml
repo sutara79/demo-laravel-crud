@@ -9,7 +9,6 @@ services:
   - postgresql
 
 install:
-  - psql -c 'create database travis_ci_test;' -U postgres
   - travis_retry composer install --no-interaction
 
 before_script:
@@ -17,9 +16,11 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - cp .env.travis .env
+  - psql -c 'create database travis_ci_test;' -U postgres
   - php artisan key:generate
   - php artisan migrate --seed
   - php artisan serve &
+  - sleep 5
 
 # Test and get code coverage
 script:

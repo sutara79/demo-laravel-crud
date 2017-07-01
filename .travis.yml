@@ -5,7 +5,11 @@ dist: trusty
 php:
   - 7.1
 
+services:
+  - postgresql
+
 install:
+  - psql -c 'create database travis_ci_test;' -U postgres
   - travis_retry composer install --no-interaction
 
 before_script:
@@ -13,7 +17,15 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - cp .env.travis .env
+  - php artisan key:generate
+  - php artisan migrate --seed
   - php artisan serve &
 
+# Test and get code coverage
 script:
   - php artisan dusk
+  - ./vendor/bin/phpunit --coverage-clover clover.xml
+
+# Submit coverage report to Codecov
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -cF php

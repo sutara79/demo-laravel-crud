@@ -1,35 +1,19 @@
-sudo: required # for Laravel Dusk
-
-dist: trusty # for Laravel Dusk
-
+sudo: required
 language: php
+dist: trusty
 
 php:
-  - 7.0
-
-services:
-  - postgresql
+  - 7.1
 
 install:
-  - cp .env.travis .env
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - composer self-update
-  - composer install --no-interaction
-  - php artisan key:generate
-  - php artisan migrate --seed
+  - travis_retry composer install --no-interaction
 
-# Browser testing (Laravel Dusk)
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - ./vendor/laravel/dusk/bin/chromedriver-linux
-  - php artisan serve > /dev/null 2>&1 &
+  - ./vendor/laravel/dusk/bin/chromedriver-linux &
+  - cp .env.testing .env
+  - php artisan serve &
 
-# Test and get code coverage
 script:
   - php artisan dusk
-  - ./vendor/bin/phpunit --coverage-clover clover.xml
-
-# Submit coverage report to Codecov
-after_success:
-  - bash <(curl -s https://codecov.io/bash) -cF php

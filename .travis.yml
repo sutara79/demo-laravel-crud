@@ -12,7 +12,7 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
-  - cp .env.testing .env
+  - cp .env.travis .env
   - php artisan serve &
 
 script:

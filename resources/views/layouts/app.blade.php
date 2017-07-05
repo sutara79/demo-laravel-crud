@@ -51,7 +51,7 @@
             </ul>
             <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item">
-                    <a href="{{ url('posts/create') }}" class="btn btn-success">
+                    <a href="{{ url('posts/create') }}" id="new-post" class="btn btn-success">
                         {{ __('New Post') }}
                     </a>
                 </li>

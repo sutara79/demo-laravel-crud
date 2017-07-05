@@ -5,7 +5,7 @@
 @extends('../layouts/app')
 
 @section('content')
-<h1>{{ $title }}</h1>
+<h1 id="post-title">{{ $title }}</h1>
 
 @can('edit', $post)
     <div class="edit">
@@ -41,7 +41,7 @@
     </dd>
 </dl>
 <hr>
-<div>
+<div id="post-body">
     {{ $post->body }}
 </div>
 @endsection

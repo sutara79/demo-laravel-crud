@@ -22,3 +22,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+// Now this code below is not used.
+// $factory->define(App\Post::class, function (Faker\Generator $faker) {
+//     static $user_id;
+
+//     return [
+//         'title' => $faker->text(20),
+//         'body' => $faker->text(200),
+//         'user_id' => $user_id ?: $user_id = 1,
+//     ];
+// });

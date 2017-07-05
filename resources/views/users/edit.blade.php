@@ -18,7 +18,7 @@
         <input type="email" name="email" value="{{ $user->email }}" class="form-control">
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-success">
+        <button type="submit" name="submit" class="btn btn-success">
             {{ __('Submit') }}
         </button>
     </div>

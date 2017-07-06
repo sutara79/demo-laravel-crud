@@ -18,13 +18,13 @@ before_script:
   - cp .env.travis .env
   - psql -c 'create database travis_ci_test;' -U postgres
   - php artisan key:generate
-  - php artisan migrate --seed
   - php artisan serve &
   - sleep 3 # give xvfb and chromedriver some time to start
 
 # Test and get code coverage
 script:
   - php artisan dusk
+  - php artisan migrate:refresh --seed
   - ./vendor/bin/phpunit --coverage-clover clover.xml
 
 # Submit coverage report to Codecov

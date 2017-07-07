@@ -12,18 +12,21 @@ install:
   - travis_retry composer install --no-interaction
 
 before_script:
+  - cp .env.testing .env
+  - psql -c 'create database travis_ci_test;' -U postgres
+
+script:
+  # Browser testing
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
-  - cp .env.testing .env
-  - psql -c 'create database travis_ci_test;' -U postgres
   - php artisan key:generate
   - php artisan serve &
   - sleep 3 # give xvfb and chromedriver some time to start
-
-# Test and get code coverage
-script:
   - php artisan dusk
+
+  # Unit and feature testing and code coverage
+  - php artisan key:generate
   - php artisan migrate:refresh --seed
   - ./vendor/bin/phpunit --coverage-clover clover.xml
 

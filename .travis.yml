@@ -27,6 +27,7 @@ script:
 
   # Unit and feature testing and code coverage
   - cp .env.travis .env
+  - php artisan key:generate
   - php artisan migrate --seed
   - ./vendor/bin/phpunit --coverage-clover clover.xml
 

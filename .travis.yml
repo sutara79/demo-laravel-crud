@@ -12,11 +12,11 @@ install:
   - travis_retry composer install --no-interaction
 
 before_script:
-  - cp .env.testing .env
   - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
   # Browser testing
+  - cp .env.dusk.travis .env
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
@@ -26,6 +26,7 @@ script:
   - php artisan dusk
 
   # Unit and feature testing and code coverage
+  - cp .env.travis .env
   - php artisan key:generate
   - php artisan migrate:refresh --seed
   - ./vendor/bin/phpunit --coverage-clover clover.xml

@@ -15,7 +15,7 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
-  - cp .env.travis .env
+  - cp .env.testing .env
   - psql -c 'create database travis_ci_test;' -U postgres
   - php artisan key:generate
   - php artisan serve &

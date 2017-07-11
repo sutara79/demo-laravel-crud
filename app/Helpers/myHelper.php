@@ -26,7 +26,7 @@ if (! function_exists('myLocaleUrl')) {
         // Build URL
         $url = ((App::environment('production')) ? 'https' : $urlParsed['scheme']) . '://' .
                $urlParsed['host'] .
-               ((isset($urlParsed['path'])) ? $urlParsed['path'] : '') .
+               ((isset($urlParsed['path'])) ? $urlParsed['path'] : '/') .
                '?' . $query;
 
         return $url;

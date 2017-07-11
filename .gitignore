@@ -9,4 +9,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
+
+# Code coverage of PHPUnit
 /coverage

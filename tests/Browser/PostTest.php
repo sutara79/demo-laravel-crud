@@ -21,15 +21,12 @@ class PostTest extends DuskTestCase
     public function testCRUD()
     {
         $user = factory(User::class)->create();
-        $post = [
+        $post = factory(Post::class)->make([
             'id' => 1,
-            'title' => 'Post1',
-            'body' => 'My First Post!',
-        ];
-        $update = [
-            'title' => 'Update1',
-            'body' => 'This post was updated.',
-        ];
+            'user_id' => $user->id,
+        ]);
+        $update = factory(Post::class)->make();
+
         $this->browse(function (Browser $browser) use ($user, $post, $update) {
             $browser->loginAs($user)
                     ->visit('/')
@@ -37,22 +34,22 @@ class PostTest extends DuskTestCase
                     // Create
                     ->press('#new-post')
                     ->assertPathIs('/posts/create')
-                    ->type('title', $post['title'])
-                    ->type('body', $post['body'])
+                    ->type('title', $post->title)
+                    ->type('body', $post->body)
                     ->press('submit')
-                    ->assertPathIs('/posts/'.$post['id'])
-                    ->assertSeeIn('#post-title', $post['title'])
-                    ->assertSeeIn('#post-body', $post['body'])
+                    ->assertPathIs('/posts/'.$post->id)
+                    ->assertSeeIn('#post-title', $post->title)
+                    ->assertSeeIn('#post-body', $post->body)
 
                     // Update
                     ->press('.edit .btn-primary')
-                    ->assertPathIs('/posts/'.$post['id'].'/edit')
-                    ->type('title', $update['title'])
-                    ->type('body', $update['body'])
+                    ->assertPathIs('/posts/'.$post->id.'/edit')
+                    ->type('title', $update->title)
+                    ->type('body', $update->body)
                     ->press('submit')
-                    ->assertPathIs('/posts/'.$post['id'])
-                    ->assertSeeIn('#post-title', $update['title'])
-                    ->assertSeeIn('#post-body', $update['body'])
+                    ->assertPathIs('/posts/'.$post->id)
+                    ->assertSeeIn('#post-title', $update->title)
+                    ->assertSeeIn('#post-body', $update->body)
 
                     // Delete
                     ->press('.edit .btn-danger')

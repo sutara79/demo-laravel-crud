@@ -24,10 +24,13 @@ if (! function_exists('myLocaleUrl')) {
         $query = implode('&', $paramsJoined);
 
         // Build URL
-        $url = ((App::environment('production')) ? 'https' : $urlParsed['scheme']) . '://' .
-               $urlParsed['host'] .
-               ((isset($urlParsed['path'])) ? $urlParsed['path'] : '/') .
-               '?' . $query;
+        $url = (App::environment('production') ? 'https' : $urlParsed['scheme']).'://'.
+               // No necessity to deal with "user" and "pass".
+               $urlParsed['host'].
+               (isset($urlParsed['port']) ? ':'.$urlParsed['port'] : '').
+               (isset($urlParsed['path']) ? $urlParsed['path'] : '/').
+               '?'.$query.
+               (isset($urlParsed['fragment']) ? '#'.$urlParsed['fragment'] : '');
 
         return $url;
     }

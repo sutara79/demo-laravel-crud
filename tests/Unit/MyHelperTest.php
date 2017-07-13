@@ -15,27 +15,16 @@ class MyHelperTest extends TestCase
      */
     public function testMyLocaleUrl()
     {
-        $this->_assertMyLocaleUrl('/',
-                                  '/?lang=ja',
-                                  'ja');
-        $this->_assertMyLocaleUrl('/?lang=ja',
-                                  '/?lang=en',
-                                  'en');
-        $this->_assertMyLocaleUrl('/posts?lang=en&page=1',
-                                  '/posts?lang=ja&page=1',
-                                  'ja');
-    }
+        $this->get('https://foo.com:8080');
+        $actual = myLocaleUrl('ja');
+        $this->assertEquals('https://foo.com:8080/?lang=ja', $actual);
 
-    /**
-     * Sub method for testMyLocaleUrl.
-     *
-     * @return void
-     */
-    private function _assertMyLocaleUrl($current, $expected, $locale)
-    {
-        $this->get($current);
-        $expected = url('/').$expected; // Not "url($expected)"
-        $actual = myLocaleUrl($locale);
-        $this->assertEquals($expected, $actual);
+        $this->get('http://bar.info:9999/?lang=ja');
+        $actual = myLocaleUrl('en');
+        $this->assertEquals('http://bar.info:9999/?lang=en', $actual);
+
+        $this->get('https://baz.io/posts?lang=en&page=23');
+        $actual = myLocaleUrl('ja');
+        $this->assertEquals('https://baz.io/posts?lang=ja&page=23', $actual);
     }
 }

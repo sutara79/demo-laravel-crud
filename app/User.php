@@ -55,6 +55,6 @@ class User extends Authenticatable
      * @return boolean
      */
     public function isAdmin() {
-        return $this->id === \Config::get('admin_id');
+        return $this->id === config('admin_id');
     }
 }

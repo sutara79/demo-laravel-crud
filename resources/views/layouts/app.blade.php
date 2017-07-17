@@ -96,12 +96,12 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdown-lang">
                         @if (!App::isLocale('en'))
-                            <a class="dropdown-item" href="{{ myLocaleUrl('en') }}">
+                            <a class="dropdown-item" href="{{ my_locale_url('en') }}">
                                 {{ __('locale.en') }}
                             </a>
                         @endif
                         @if (!App::isLocale('ja'))
-                            <a class="dropdown-item" href="{{ myLocaleUrl('ja') }}">
+                            <a class="dropdown-item" href="{{ my_locale_url('ja') }}">
                                 {{ __('locale.ja') }}
                             </a>
                         @endif

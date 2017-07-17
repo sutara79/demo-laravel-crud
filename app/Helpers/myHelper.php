@@ -1,12 +1,12 @@
 <?php
-if (! function_exists('myLocaleUrl')) {
+if (! function_exists('my_locale_url')) {
     /**
      * Get URL to change locale using App\Http\Middleware\CheckLocale.
      *
      * @param string $locale
      * @return string
      */
-    function myLocaleUrl($locale)
+    function my_locale_url($locale)
     {
         // Parse URL
         $urlParsed = parse_url(Request::fullUrl());

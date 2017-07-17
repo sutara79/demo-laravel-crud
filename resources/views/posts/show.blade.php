@@ -30,13 +30,13 @@
     <dt>{{ __('Created') }}:</dt>
     <dd>
         <time itemprop="dateCreated" datetime="{{ $post->created_at }}">
-            {{ myDate($post->created_at) }}
+            {{ my_date($post->created_at) }}
         </time>
     </dd>
     <dt>{{ __('Updated') }}:</dt>
     <dd>
         <time itemprop="dateModified" datetime="{{ $post->updated_at }}">
-            {{ myDate($post->updated_at) }}
+            {{ my_date($post->updated_at) }}
         </time>
     </dd>
 </dl>

@@ -36,14 +36,14 @@ if (! function_exists('my_locale_url')) {
     }
 }
 
-if (! function_exists('myIsCurrentController')) {
+if (! function_exists('my_is_current_controller')) {
     /**
      * Check if the current controller's name matches given string.
      *
      * @param string $names Comma separated controller's name
      * @return bool
      */
-    function myIsCurrentController($names)
+    function my_is_current_controller($names)
     {
         $names = array_map('trim', explode(',', $names));
         $current = explode('.', Route::currentRouteName())[0];
@@ -52,14 +52,14 @@ if (! function_exists('myIsCurrentController')) {
 }
 
 /** @todo Complete this function */
-if (! function_exists('myDate')) {
+if (! function_exists('my_date')) {
     /**
      * Get datetime of user's timezone.
      *
      * @param string $date
      * @return string
      */
-    function myDate($date)
+    function my_date($date)
     {
         // Create DateTime object
         $t = new DateTime($date, new DateTimeZone('UTC'));

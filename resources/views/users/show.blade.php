@@ -54,8 +54,8 @@
                         </a>
                     </td>
                     <td>{{ $post->body }}</td>
-                    <td>{{ myDate($post->created_at) }}</td>
-                    <td>{{ myDate($post->updated_at) }}</td>
+                    <td>{{ my_date($post->created_at) }}</td>
+                    <td>{{ my_date($post->updated_at) }}</td>
                     @can('edit', $user)
                         <td nowrap>
                             <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">

@@ -13,6 +13,7 @@
         <label for="title">{{ __('Title') }}</label>
         <div>
             <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
+
             @if ($errors->has('title'))
                 <span class="help-block">
                     <strong>{{ $errors->first('title') }}</strong>

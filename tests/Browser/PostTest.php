@@ -59,4 +59,26 @@ class PostTest extends DuskTestCase
                     });
         });
     }
+
+    /**
+     * Make sure to display validation error on create page.
+     *
+     * @return void
+     */
+    public function testValidate()
+    {
+        $user = factory(User::class)->create();
+        $post = factory(Post::class)->make([
+            'title' => str_pad('', 200, 'a'),
+        ]);
+        $this->browse(function (Browser $browser) use ($user, $post) {
+            $browser->loginAs($user)
+                    ->visit('/posts/create')
+                    ->type('title', $post->title)
+                    ->type('body', $post->body)
+                    ->press('submit')
+                    ->assertPathIs('/posts/create')
+                    ->assertInputValue('title', $post->title);
+        });
+    }
 }

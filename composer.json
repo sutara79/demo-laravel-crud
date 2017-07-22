@@ -11,7 +11,8 @@
         "fzaninotto/faker": "^1.6",
         "laravel/dusk": "^1.1",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "^121.0",

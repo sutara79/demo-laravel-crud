@@ -13,7 +13,8 @@ class StorePost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // The authorization logic is another part.
+        return true;
     }
 
     /**
@@ -24,7 +25,8 @@ class StorePost extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|unique:posts|max:191',
+            'body' => 'required|max:400',
         ];
     }
 }

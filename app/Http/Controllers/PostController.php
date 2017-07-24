@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Http\Requests\StorePost;
 
 class PostController extends Controller
 {
@@ -36,16 +37,11 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StorePost $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-        $this->validate($request, [
-            'title' => 'required|unique:posts|max:191',
-            'body' => 'required|max:400',
-        ]);
-
         $post = new Post;
         $post->title = $request->title;
         $post->body = $request->body;
@@ -81,11 +77,11 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StorePost $request
      * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(StorePost $request, Post $post)
     {
         $this->authorize('edit', $post);
         $post->title = $request->title;

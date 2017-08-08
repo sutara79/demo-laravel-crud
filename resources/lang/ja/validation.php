@@ -116,6 +116,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'title' => __('Title'),
+        'body'  => __('Body'),
+    ],
 
 ];

@@ -5,7 +5,6 @@
 
 
 My practice for basic CRUD of Laravel 5.4 with Heroku.  
-**Unfinished.**
 
 
 ## Demo

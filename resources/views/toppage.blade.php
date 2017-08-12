@@ -9,8 +9,7 @@
 @section('content')
 <h1>{{ $title }}</h1>
 <p>
-    {{ __('My practice for basic CRUD of Laravel 5.4 on Heroku.') }}<br>
-    {{ __('Unfinished.') }}
+    {{ __('My practice for basic CRUD of Laravel 5.4 on Heroku.') }}
 </p>
 <ul>
     <li>

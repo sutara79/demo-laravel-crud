@@ -9,7 +9,8 @@
 @section('content')
 <h1>{{ $title }}</h1>
 <p>
-    {{ __('My practice for basic CRUD of Laravel 5.4 on Heroku.') }}
+    {{ __('My practice for basic CRUD of Laravel 5.5 on Heroku.') }}<br>
+    ({{ __('Upgraded from Laravel 5.4') }})
 </p>
 <ul>
     <li>
@@ -21,7 +22,7 @@
     <li>
         Qiita:
         <a href="http://qiita.com/sutara79/items/ef30fcdfb7afcb2188ea" target="_blank">
-            Laravel 5.4で基本的なCRUDを作る
+            Laravel 5.5で基本的なCRUDを作る
         </a>
     </li>
 </ul>

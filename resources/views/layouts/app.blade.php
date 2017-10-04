@@ -13,7 +13,7 @@
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:image" content="{{ asset('img/og_image.png') }}" />
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
-    <meta property="og:description" content="{{ __('My practice for basic CRUD of Laravel 5.4 on Heroku.') }}" />
+    <meta property="og:description" content="{{ __('My practice for basic CRUD of Laravel 5.5 on Heroku.') }}" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:player" content="@sutara_lumpur" />
     <meta property="fb:admins" content="100000634897828" />

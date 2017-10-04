@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         // For MySQL < 5.7.7 or MariaDB < 10.2.2
-        // See https://github.com/laravel/framework/issues/17508
+        // See https://laravel.com/docs/5.5/migrations#indexes
         \Schema::defaultStringLength(191);
 
         // For SQLite

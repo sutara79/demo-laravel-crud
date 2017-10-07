@@ -2,7 +2,7 @@
     $title = env('APP_NAME');
 @endphp
 
-@extends('layouts.app')
+@extends('layouts.my')
 
 @section('title', 'demo-laravel-crud')
 

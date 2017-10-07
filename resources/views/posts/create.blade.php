@@ -2,7 +2,7 @@
     $title = __('Create Post');
 @endphp
 
-@extends('../layouts/app')
+@extends('layouts.my')
 
 @section('content')
 <h1>{{ $title }}</h1>

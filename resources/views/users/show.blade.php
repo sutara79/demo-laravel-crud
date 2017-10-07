@@ -2,7 +2,7 @@
     $title = __('User') . ': ' . $user->name;
 @endphp
 
-@extends('../layouts/app')
+@extends('layouts.my')
 
 @section('content')
 <h1>{{ $title }}</h1>
@@ -12,7 +12,7 @@
         <a href="{{ url('users/' . $user->id . '/edit') }}" class="btn btn-primary">
             {{ __('Edit') }}
         </a>
-        @component('form-del')
+        @component('components.btn-del')
             @slot('controller', 'users')
             @slot('id', $user->id)
             @slot('name', $user->name)
@@ -61,7 +61,7 @@
                             <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">
                                 {{ __('Edit') }}
                             </a>
-                            @component('form-del')
+                            @component('components.btn-del')
                                 @slot('controller', 'posts')
                                 @slot('id', $post->id)
                                 @slot('name', $post->title)

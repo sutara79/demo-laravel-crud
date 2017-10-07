@@ -2,7 +2,7 @@
     $title = $post->title;
 @endphp
 
-@extends('../layouts/app')
+@extends('layouts.my')
 
 @section('content')
 <h1 id="post-title">{{ $title }}</h1>
@@ -12,7 +12,7 @@
         <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">
             {{ __('Edit') }}
         </a>
-        @component('form-del')
+        @component('components.btn-del')
             @slot('controller', 'posts')
             @slot('id', $post->id)
             @slot('name', $post->title)

@@ -2,7 +2,7 @@
     $title = __('Register');
 @endphp
 
-@extends('layouts.app')
+@extends('layouts.my')
 
 @section('content')
 <h1>{{ $title }}</h1>

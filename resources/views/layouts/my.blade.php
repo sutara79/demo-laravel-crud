@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="{{ config('app.locale') }}">
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,11 +20,10 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-        <a class="navbar-brand" href="{{ url('/') }}">{{ env('APP_NAME') }}</a>
+        <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,7 +54,7 @@
                         {{ __('New Post') }}
                     </a>
                 </li>
-                @if (Auth::guest())
+                @guest
                     <li class="nav-item @if (my_is_current_controller('login, password')) active @endif">
                         <a class="nav-link" href="{{ route('login') }}">
                             {{ __('Login') }}
@@ -74,10 +73,10 @@
                     </li>
                 @else
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown-user">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
                             <a class="dropdown-item" href="{{ url('users/' . Auth::user()->id) }}">
                                 {{ __('Profile') }}
                             </a>
@@ -89,12 +88,12 @@
                             </form>
                         </div>
                     </li>
-                @endif
+                @endguest
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown-lang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ __('locale.' . App::getLocale()) }}
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown-lang">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-lang">
                         @if (!App::isLocale('en'))
                             <a class="dropdown-item" href="{{ my_locale_url('en') }}">
                                 {{ __('locale.en') }}

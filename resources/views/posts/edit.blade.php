@@ -1,12 +1,10 @@
 @php
     $title = __('Edit') . ': ' . $post->title;
 @endphp
-
 @extends('layouts.my')
-
 @section('content')
 <h1>{{ $title }}</h1>
-<form action="{{ url('posts/' . $post->id) }}" method="post">
+<form action="{{ url('posts/'.$post->id) }}" method="post">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

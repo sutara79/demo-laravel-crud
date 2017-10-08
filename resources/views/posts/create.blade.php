@@ -1,9 +1,7 @@
 @php
     $title = __('Create Post');
 @endphp
-
 @extends('layouts.my')
-
 @section('content')
 <h1>{{ $title }}</h1>
 <form action="{{ url('posts') }}" method="post">

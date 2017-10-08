@@ -20,14 +20,14 @@
     </div>
 @endcan
 
-<dl>
-    <dt>ID</dt>
-    <dd>{{ $user->id }}</dd>
-    <dt>{{ __('Name') }}</dt>
-    <dd>{{ $user->name }}</dd>
+<dl class="row">
+    <dt class="col-md-2">ID</dt>
+    <dd class="col-md-10">{{ $user->id }}</dd>
+    <dt class="col-md-2">{{ __('Name') }}</dt>
+    <dd class="col-md-10">{{ $user->name }}</dd>
     @can('edit', $user)
-        <dt>{{ __('Email') }}</dt>
-        <dd>{{ $user->email }}</dd>
+        <dt class="col-md-2">{{ __('Email') }}</dt>
+        <dd class="col-md-10">{{ $user->email }}</dd>
     @endcan
 </dl>
 
@@ -46,33 +46,28 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($user->posts as $post)
-                <tr>
-                    <td>
-                        <a href="{{ url('posts/' . $post->id) }}">
-                            {{ $post->title }}
+        @foreach ($user->posts as $post)
+            <tr>
+                <td><a href="{{ url('posts/'.$post->id) }}">{{ $post->title }}</a></td>
+                <td>{{ $post->body }}</td>
+                <td>{{ my_date($post->created_at) }}</td>
+                <td>{{ my_date($post->updated_at) }}</td>
+                @can('edit', $user)
+                    <td nowrap>
+                        <a href="{{ url('posts/'.$post->id.'/edit') }}" class="btn btn-primary">
+                            {{ __('Edit') }}
                         </a>
+                        @component('components.btn-del')
+                            @slot('controller', 'posts')
+                            @slot('id', $post->id)
+                            @slot('name', $post->title)
+                        @endcomponent
                     </td>
-                    <td>{{ $post->body }}</td>
-                    <td>{{ my_date($post->created_at) }}</td>
-                    <td>{{ my_date($post->updated_at) }}</td>
-                    @can('edit', $user)
-                        <td nowrap>
-                            <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">
-                                {{ __('Edit') }}
-                            </a>
-                            @component('components.btn-del')
-                                @slot('controller', 'posts')
-                                @slot('id', $post->id)
-                                @slot('name', $post->title)
-                            @endcomponent
-                        </td>
-                    @endcan
-                 </tr>
-            @endforeach
+                @endcan
+             </tr>
+        @endforeach
         </tbody>
     </table>
 </div>
 {{ $user->posts->links() }}
-
 @endsection

@@ -1,4 +1,19 @@
 <?php
+if (! function_exists('my_is_current_controller')) {
+    /**
+     * Check if the current controller's name matches given string.
+     *
+     * @param string $names Comma separated controller's name
+     * @return bool
+     */
+    function my_is_current_controller($names)
+    {
+        $names = array_map('trim', explode(',', $names));
+        $current = explode('.', Route::currentRouteName())[0];
+        return in_array($current, $names, true);
+    }
+}
+
 if (! function_exists('my_locale_url')) {
     /**
      * Get URL to change locale using App\Http\Middleware\CheckLocale.
@@ -33,21 +48,6 @@ if (! function_exists('my_locale_url')) {
                (isset($urlParsed['fragment']) ? '#'.$urlParsed['fragment'] : '');
 
         return $url;
-    }
-}
-
-if (! function_exists('my_is_current_controller')) {
-    /**
-     * Check if the current controller's name matches given string.
-     *
-     * @param string $names Comma separated controller's name
-     * @return bool
-     */
-    function my_is_current_controller($names)
-    {
-        $names = array_map('trim', explode(',', $names));
-        $current = explode('.', Route::currentRouteName())[0];
-        return in_array($current, $names, true);
     }
 }
 

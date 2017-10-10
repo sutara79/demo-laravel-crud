@@ -91,7 +91,7 @@
                 @endguest
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown-lang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ __('locale.' . App::getLocale()) }}
+                        {{ __('locale.'.App::getLocale()) }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-lang">
                         @if (!App::isLocale('en'))

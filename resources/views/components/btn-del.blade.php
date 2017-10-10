@@ -1,5 +1,5 @@
 @php
-    $id_attr = 'modal-delete-' . $controller . '-' . $id;
+    $id_attr = 'modal-delete-'.$controller.'-'.$id;
 @endphp
 
 <!-- Delete button -->

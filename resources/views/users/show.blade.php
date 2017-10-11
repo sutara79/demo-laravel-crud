@@ -1,12 +1,9 @@
 @php
     $title = __('User') . ': ' . $user->name;
 @endphp
-
 @extends('layouts.my')
-
 @section('content')
 <h1>{{ $title }}</h1>
-
 @can('edit', $user)
     <div>
         <a href="{{ url('users/' . $user->id . '/edit') }}" class="btn btn-primary">

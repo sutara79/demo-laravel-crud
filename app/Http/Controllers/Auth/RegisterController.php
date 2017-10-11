@@ -79,6 +79,6 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        return redirect('users/' . $user->id)->with('status', __('You were registered.'));
+        return redirect('users/'.$user->id)->with('status', __('You were registered.'));
     }
 }

@@ -50,7 +50,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Whether the user is admin.
+     * Whether current user is admin.
      *
      * @return boolean
      */

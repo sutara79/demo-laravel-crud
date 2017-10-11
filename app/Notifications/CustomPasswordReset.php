@@ -12,6 +12,7 @@ class CustomPasswordReset extends Notification
 {
     use Queueable;
 
+    /** @var string */
     public $token;
 
     /**
@@ -48,9 +49,6 @@ class CustomPasswordReset extends Notification
                     ->subject(__('Reset Password'))
                     ->view('emails.reset')
                     ->action(__('Reset Password'), url('password/reset', $this->token));
-                    // ->line('The introduction to the notification.')
-                    // ->action('Notification Action', url('/'))
-                    // ->line('Thank you for using our application!');
     }
 
     /**

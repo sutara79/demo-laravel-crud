@@ -47,7 +47,7 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        return redirect('users/' . $user->id)->with('status', __('You logged in.'));
+        return redirect('users/'.$user->id)->with('status', __('You logged in.'));
     }
 
     /**

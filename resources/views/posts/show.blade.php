@@ -5,7 +5,7 @@
 @section('content')
 <h1 id="post-title">{{ $title }}</h1>
 @can('edit', $post)
-    <div>
+    <div class="edit">
         <a href="{{ url('posts/'.$post->id.'/edit') }}" class="btn btn-primary">
             {{ __('Edit') }}
         </a>

@@ -1,5 +1,5 @@
 @php
-    $title = 'Create User';
+    $title = __('Create User');
 @endphp
 @extends('layouts.my')
 @section('content')

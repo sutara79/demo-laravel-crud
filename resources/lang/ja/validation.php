@@ -118,7 +118,10 @@ return [
 
     'attributes' => [
         'title' => __('Title'),
-        'body'  => __('Body'),
+        'body' => __('Body'),
+        'name' => __('Name'),
+        'email' => __('Email'),
+        'password' => __('Password'),
     ],
 
 ];

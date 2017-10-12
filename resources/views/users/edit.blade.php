@@ -8,17 +8,19 @@
     {{ csrf_field() }}
     {{ method_field('PUT') }}
     <div class="form-group">
-        <label for="name">{{ __('Name') }}:</label><br>
-        <input type="text" name="name" value="{{ $user->name }}" class="form-control">
+        <label for="name">{{ __('Name') }}</label>
+        <input id="name" type="text" class="form-control @if ($errors->has('name')) is-invalid @endif" name="name" value="{{ old('name', $user->name) }}" required autofocus>
+        @if ($errors->has('name'))
+            <span class="invalid-feedback">{{ $errors->first('name') }}</span>
+        @endif
     </div>
     <div class="form-group">
-        <label for="email">{{ __('Email') }}:</label><br>
-        <input type="email" name="email" value="{{ $user->email }}" class="form-control">
+        <label for="email">{{ __('Email') }}</label>
+        <input id="email" type="email" class="form-control @if ($errors->has('email')) is-invalid @endif" name="email" value="{{ old('email', $user->email) }}" required>
+        @if ($errors->has('email'))
+            <span class="invalid-feedback">{{ $errors->first('email') }}</span>
+        @endif
     </div>
-    <div class="form-group">
-        <button type="submit" name="submit" class="btn btn-success">
-            {{ __('Submit') }}
-        </button>
-    </div>
+    <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
 </form>
 @endsection

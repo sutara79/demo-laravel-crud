@@ -1,5 +1,5 @@
 @php
-    $title = __('Edit') . ': ' . $post->title;
+    $title = __('Edit').': '.$post->title;
 @endphp
 @extends('layouts.my')
 @section('content')
@@ -7,32 +7,20 @@
 <form action="{{ url('posts/'.$post->id) }}" method="post">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
-    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+    <div class="form-group">
         <label for="title">{{ __('Title') }}</label>
-        <div>
-            <input id="title" type="text" class="form-control" name="title" value="{{ $post->title }}" required autofocus>
-            @if ($errors->has('title'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('title') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-    <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-        <label for="body">{{ __('Body') }}</label>
-        <div>
-            <textarea id="body" class="form-control" name="body" rows="8" required>{{ $post->body }}</textarea>
-            @if ($errors->has('body'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('body') }}</strong>
-                </span>
-            @endif
-        </div>
+        <input id="title" type="text" class="form-control @if ($errors->has('title')) is-invalid @endif" name="title" value="{{ old('title', $post->title) }}" required autofocus>
+        @if ($errors->has('title'))
+            <span class="invalid-feedback">{{ $errors->first('title') }}</span>
+        @endif
     </div>
     <div class="form-group">
-        <button type="submit" name="submit" class="btn btn-primary">
-            {{ __('Submit') }}
-        </button>
+        <label for="body">{{ __('Body') }}</label>
+        <textarea id="body" class="form-control @if ($errors->has('body')) is-invalid @endif" name="body" rows="8" required>{{ old('body', $post->body) }}</textarea>
+        @if ($errors->has('body'))
+            <span class="invalid-feedback">{{ $errors->first('body') }}</span>
+        @endif
     </div>
+    <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
 </form>
 @endsection

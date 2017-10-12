@@ -1,9 +1,7 @@
 @php
     $title = __('Edit').': '.$user->name;
 @endphp
-
 @extends('layouts.my')
-
 @section('content')
 <h1>{{ $title }}</h1>
 <form action="{{ url('users/'.$user->id) }}" method="post">

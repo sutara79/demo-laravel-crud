@@ -1,9 +1,7 @@
 @php
     $title = 'Create User';
 @endphp
-
 @extends('layouts.my')
-
 @section('content')
 <h1>{{ $title }}</h1>
 <form action="{{ url('users') }}" method="post">
@@ -25,7 +23,6 @@
 
         <div class="col-md-6">
             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
             @if ($errors->has('email'))
                 <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>
@@ -35,10 +32,8 @@
     </div>
     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
         <label for="password" class="col-md-4 control-label">{{ __('Password') }}</label>
-
         <div class="col-md-6">
             <input id="password" type="password" class="form-control" name="password" required>
-
             @if ($errors->has('password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>

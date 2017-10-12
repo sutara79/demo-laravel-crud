@@ -22,7 +22,6 @@
         <label for="body">{{ __('Body') }}</label>
         <div>
             <textarea id="body" class="form-control" name="body" rows="8" required>{{ $post->body }}</textarea>
-
             @if ($errors->has('body'))
                 <span class="help-block">
                     <strong>{{ $errors->first('body') }}</strong>

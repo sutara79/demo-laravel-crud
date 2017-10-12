@@ -11,7 +11,6 @@
         <label for="title">{{ __('Title') }}</label>
         <div>
             <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
-
             @if ($errors->has('title'))
                 <span class="help-block">
                     <strong>{{ $errors->first('title') }}</strong>
@@ -23,7 +22,6 @@
         <label for="body">{{ __('Body') }}</label>
         <div>
             <textarea id="body" class="form-control" name="body" rows="8" required>{{ old('body') }}</textarea>
-
             @if ($errors->has('body'))
                 <span class="help-block">
                     <strong>{{ $errors->first('body') }}</strong>

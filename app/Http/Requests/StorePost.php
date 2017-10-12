@@ -13,7 +13,7 @@ class StorePost extends FormRequest
      */
     public function authorize()
     {
-        // The authorization logic is another part.
+        // The authorization logic is in another part.
         return true;
     }
 

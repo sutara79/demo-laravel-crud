@@ -47,8 +47,7 @@ class PostController extends Controller
         $post->body = $request->body;
         $post->user_id = $request->user()->id;
         $post->save();
-        return redirect('posts/' . $post->id)
-                   ->with('status', __('Posted new article.'));
+        return redirect('posts/' . $post->id)->with('status', __('Posted new article.'));
     }
 
     /**
@@ -87,8 +86,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
-        return redirect('posts/' . $post->id)
-                   ->with('status', __('Updated an article.'));
+        return redirect('posts/' . $post->id)->with('status', __('Updated an article.'));
     }
 
     /**
@@ -101,7 +99,6 @@ class PostController extends Controller
     {
         $this->authorize('edit', $post);
         $post->delete();
-        return redirect('posts')
-                   ->with('status', __('Deleted an article.'));
+        return redirect('posts')->with('status', __('Deleted an article.'));
     }
 }

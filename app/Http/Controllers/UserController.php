@@ -49,8 +49,7 @@ class UserController extends Controller
         $user->lang = session('locale');
         $user->timezone = 'UTC';
         $user->save();
-        return redirect('users/' . $user->id)
-                   ->with('status', __('Created new user.'));
+        return redirect('users/'.$user->id)->with('status', __('Created new user.'));
     }
 
     /**
@@ -91,8 +90,7 @@ class UserController extends Controller
         $user->lang = $request->lang;
         $user->timezone = $request->timezone;
         $user->save();
-        return redirect('users/' . $user->id)
-                   ->with('status', __('Updated a user.'));
+        return redirect('users/'.$user->id)->with('status', __('Updated a user.'));
     }
 
     /**
@@ -105,7 +103,6 @@ class UserController extends Controller
     {
         $this->authorize('edit', $user);
         $user->delete();
-        return redirect('users')
-                   ->with('status', __('Deleted a user.'));
+        return redirect('users')->with('status', __('Deleted a user.'));
     }
 }

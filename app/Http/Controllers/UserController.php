@@ -88,7 +88,6 @@ class UserController extends Controller
     {
         $this->authorize('edit', $user);
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->lang = $request->lang;
         $user->timezone = $request->timezone;
         $user->save();

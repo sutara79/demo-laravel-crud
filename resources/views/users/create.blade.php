@@ -28,6 +28,10 @@
             <span class="invalid-feedback">{{ $errors->first('password') }}</span>
         @endif
     </div>
+    <div class="form-group">
+        <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+        <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
+    </div>
     <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
 </form>
 @endsection

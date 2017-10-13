@@ -45,7 +45,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->user_id = \Auth::id();
+        $post->user_id = $request->user()->id;
         $post->save();
         return redirect('posts/' . $post->id)
                    ->with('status', __('Posted new article.'));

@@ -3,10 +3,9 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class MyHelperTest extends TestCase
+class HelpersTest extends TestCase
 {
     /**
      * Test for my_locale_url
@@ -15,8 +14,13 @@ class MyHelperTest extends TestCase
      */
     public function testMyLocaleUrl()
     {
+        // 指定したページへ移動 (実在しないURLでもOK)
         $this->get('https://foo.com:8080');
+
+        // ヘルパー関数を実行し、加工されたURLを取得する
         $actual = my_locale_url('ja');
+
+        // 期待と実際が同じであることを確かめる
         $this->assertEquals('https://foo.com:8080/?lang=ja', $actual);
 
         $this->get('http://bar.info:9999/?lang=ja');

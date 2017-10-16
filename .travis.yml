@@ -1,23 +1,30 @@
-sudo: required # for Dusk
+sudo: required # ブラウザテスト用
 language: php
-dist: trusty # for Dusk
+dist: trusty # ブラウザテスト用
 
 php:
   - 7.1
 
 services:
+  # DBはPostgreSQLを使用
   - postgresql
 
 install:
+  # Composerのパッケージをインストール
   - travis_retry composer install --no-interaction
 
 before_script:
+  # DBを作成
   - psql -c 'create database travis_ci_test;' -U postgres
+
+  # 環境設定をTravisCI用に変更
   - cp .env.travis .env
+
+  # LaravelのAPP_KEYを生成
   - php artisan key:generate
 
 script:
-  # Browser testing
+  # まず、ブラウザテストを実行
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
@@ -25,10 +32,10 @@ script:
   - sleep 3 # give xvfb and chromedriver some time to start
   - php artisan dusk
 
-  # Unit and feature testing and code coverage
+  # 単体テストとカバレッジ取得を実行
   - php artisan migrate --seed
   - ./vendor/bin/phpunit --coverage-clover clover.xml
 
-# Submit coverage report to Codecov
 after_success:
+  # カバレッジをCodecovへ送る
   - bash <(curl -s https://codecov.io/bash) -cF php

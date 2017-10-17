@@ -9,9 +9,12 @@ services:
   # DBはPostgreSQLを使用
   - postgresql
 
+addons:
+  chrome: stable # ブラウザテスト用
+
 install:
   # Composerのパッケージをインストール
-  - travis_retry composer install --no-interaction
+  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
 
 before_script:
   # DBを作成
@@ -25,11 +28,8 @@ before_script:
 
 script:
   # まず、ブラウザテストを実行
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - ./vendor/laravel/dusk/bin/chromedriver-linux &
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
-  - sleep 3 # give xvfb and chromedriver some time to start
   - php artisan dusk
 
   # 単体テストとカバレッジ取得を実行

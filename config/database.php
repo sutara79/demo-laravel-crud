@@ -1,4 +1,6 @@
 <?php
+// Extract REDIS_URL of Heroku
+// See https://qiita.com/kuropen/items/222af1e4a84d7fe70bb1
 if (getenv('REDIS_URL')) {
     $url = parse_url(getenv('REDIS_URL'));
 
@@ -6,7 +8,6 @@ if (getenv('REDIS_URL')) {
     putenv('REDIS_PORT='.$url['port']);
     putenv('REDIS_PASSWORD='.$url['pass']);
 }
-
 
 return [
 

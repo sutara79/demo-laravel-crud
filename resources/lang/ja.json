@@ -58,5 +58,14 @@
 
     "You logged in.": "ログインしました。",
     "You logged out.": "ログアウトしました。",
-    "You were registered.": "ユーザー登録が完了しました。"
+    "You were registered.": "ユーザー登録が完了しました。",
+
+    "Error": "エラー",
+    "Forbidden": "閲覧禁止",
+    "You do not have permission to access this page.": "このページを表示する権限がありません。",
+    "Not Found": "ページが見つかりません",
+    "The requested page does not exist.": "リクエストされたページは存在しません。",
+    "Internal Server Error": "サーバ内部エラー",
+    "The server was unable to complete your request.": "サーバが処理を完了できませんでした。"
+
 }

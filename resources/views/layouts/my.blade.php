@@ -23,95 +23,97 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-        <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="container">
+            <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item @if (my_is_current_controller('posts')) active @endif">
-                    <a class="nav-link" href="{{ url('posts') }}">
-                        {{ __('Posts') }}
-                        @if (my_is_current_controller('posts'))
-                            <span class="sr-only">(current)</span>
-                        @endif
-                    </a>
-                </li>
-                <li class="nav-item @if (my_is_current_controller('users')) active @endif">
-                    <a class="nav-link" href="{{ url('users') }}">
-                        {{ __('Users') }}
-                        @if (my_is_current_controller('users'))
-                            <span class="sr-only">(current)</span>
-                        @endif
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav my-2 my-lg-0">
-                <li class="nav-item">
-                    <a href="{{ url('posts/create') }}" id="new-post" class="btn btn-success">
-                        {{ __('New Post') }}
-                    </a>
-                </li>
-                @guest
-                    <li class="nav-item @if (my_is_current_controller('login, password')) active @endif">
-                        <a class="nav-link" href="{{ route('login') }}">
-                            {{ __('Login') }}
-                            @if (my_is_current_controller('login, password'))
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item @if (my_is_current_controller('posts')) active @endif">
+                        <a class="nav-link" href="{{ url('posts') }}">
+                            {{ __('Posts') }}
+                            @if (my_is_current_controller('posts'))
                                 <span class="sr-only">(current)</span>
                             @endif
                         </a>
                     </li>
-                    <li class="nav-item @if (my_is_current_controller('register')) active @endif">
-                        <a class="nav-link" href="{{ route('register') }}">
-                            {{ __('Register') }}
-                            @if (my_is_current_controller('register'))
+                    <li class="nav-item @if (my_is_current_controller('users')) active @endif">
+                        <a class="nav-link" href="{{ url('users') }}">
+                            {{ __('Users') }}
+                            @if (my_is_current_controller('users'))
                                 <span class="sr-only">(current)</span>
                             @endif
                         </a>
                     </li>
-                @else
+                </ul>
+                <ul class="navbar-nav my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a href="{{ url('posts/create') }}" id="new-post" class="btn btn-success">
+                            {{ __('New Post') }}
+                        </a>
+                    </li>
+                    @guest
+                        <li class="nav-item @if (my_is_current_controller('login, password')) active @endif">
+                            <a class="nav-link" href="{{ route('login') }}">
+                                {{ __('Login') }}
+                                @if (my_is_current_controller('login, password'))
+                                    <span class="sr-only">(current)</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li class="nav-item @if (my_is_current_controller('register')) active @endif">
+                            <a class="nav-link" href="{{ route('register') }}">
+                                {{ __('Register') }}
+                                @if (my_is_current_controller('register'))
+                                    <span class="sr-only">(current)</span>
+                                @endif
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
+                                <a class="dropdown-item" href="{{ url('users/' . Auth::user()->id) }}">
+                                    {{ __('Profile') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown-lang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ __('locale.'.App::getLocale()) }}
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-                            <a class="dropdown-item" href="{{ url('users/' . Auth::user()->id) }}">
-                                {{ __('Profile') }}
-                            </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-lang">
+                            @if (!App::isLocale('en'))
+                                <a class="dropdown-item" href="{{ my_locale_url('en') }}">
+                                    {{ __('locale.en') }}
+                                </a>
+                            @endif
+                            @if (!App::isLocale('ja'))
+                                <a class="dropdown-item" href="{{ my_locale_url('ja') }}">
+                                    {{ __('locale.ja') }}
+                                </a>
+                            @endif
                         </div>
                     </li>
-                @endguest
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="dropdown-lang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ __('locale.'.App::getLocale()) }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-lang">
-                        @if (!App::isLocale('en'))
-                            <a class="dropdown-item" href="{{ my_locale_url('en') }}">
-                                {{ __('locale.en') }}
-                            </a>
-                        @endif
-                        @if (!App::isLocale('ja'))
-                            <a class="dropdown-item" href="{{ my_locale_url('ja') }}">
-                                {{ __('locale.ja') }}
-                            </a>
-                        @endif
-                    </div>
-                </li>
-            </ul>
+                </ul>
+            </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container mt-2">
         @if (session('status'))
-            <div class="alert alert-success mt-2">
+            <div class="alert alert-success">
                 {{ session('status') }}
             </div>
         @endif

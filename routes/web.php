@@ -42,6 +42,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Custom Error
+Route::get('custom-error', function () {
+    abort('404');
+});
+
 // List global functions
 Route::get('foo/except-for-helpers', function() {
     $arrDocs = [

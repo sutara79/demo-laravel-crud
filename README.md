@@ -11,6 +11,11 @@ My practice for basic CRUD of Laravel 5.5 with Heroku.
 https://sutara79-laravel.herokuapp.com/
 
 
+## Documentation
+(Japanese)
+https://qiita.com/sutara79/items/ef30fcdfb7afcb2188ea
+
+
 ## Feature
 - All visitors can read all posts.
 - All visitors can read all users' profile except email address.

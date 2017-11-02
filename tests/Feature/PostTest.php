@@ -27,7 +27,6 @@ class PostTest extends TestCase
      */
     public function testShow()
     {
-
         $response = $this->get('users/1');
         $response->assertStatus(200);
     }

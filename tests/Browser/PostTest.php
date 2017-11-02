@@ -10,6 +10,9 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\User;
 use App\Post;
 
+/**
+ * Post(記事)に関するテスト
+ */
 class PostTest extends DuskTestCase
 {
     // Dusk実行前にマイグレーションする
@@ -68,16 +71,21 @@ class PostTest extends DuskTestCase
     }
 
     /**
-     * 文字数超過の際に正しくバリデーション・エラーが表示されることを確認する
+     * バリデーションの動作を確認する (createアクション)
      *
      * @return void
      */
-    public function testValidate()
+    public function testValidationCreate()
     {
+        // ユーザーを新規に作成・保存
         $user = factory(User::class)->create();
+
+        // 投稿の作成のみを行う。保存はしない
         $post = factory(Post::class)->make([
             'title' => str_pad('', 200, 'a'),
         ]);
+
+        // わざとバリデーション・エラーを起こす
         $this->browse(function (Browser $browser) use ($user, $post) {
             $browser->loginAs($user)
                     ->visit('/posts/create')
@@ -86,6 +94,30 @@ class PostTest extends DuskTestCase
                     ->press('submit')
                     ->assertPathIs('/posts/create')
                     ->assertInputValue('title', $post->title);
+        });
+    }
+
+    /**
+     * バリデーションの動作を確認する (editアクション)
+     *
+     * @return void
+     */
+    public function testValidationEdit()
+    {
+        // ユーザーと投稿を新規に作成・保存
+        $user = factory(User::class)->create();
+        $post = factory(Post::class)->create();
+
+        // わざとバリデーション・エラーを起こす
+        $this->browse(function (Browser $browser) use ($user, $post) {
+            $path = '/posts/'.$post->id.'/edit';
+            $newTitle = str_pad('', 200, 'a');
+            $browser->loginAs($user)
+                    ->visit($path)
+                    ->type('title', $newTitle)
+                    ->press('submit')
+                    ->assertPathIs($path)
+                    ->assertInputValue('title', $newTitle);
         });
     }
 }

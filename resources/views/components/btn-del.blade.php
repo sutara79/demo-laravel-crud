@@ -1,5 +1,5 @@
 @php
-    $id_attr = 'modal-delete-'.$controller.'-'.$id;
+    $id_attr = 'modal-delete-' . $controller . '-' . $id;
 @endphp
 
 <!-- Delete button -->
@@ -12,7 +12,9 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="{{ $id_attr }}-label">{{ __('Confirm delete') }}</h5>
+                <h5 class="modal-title" id="{{ $id_attr }}-label">
+                    {{ __('Confirm delete') }}
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -22,11 +24,15 @@
                 <p><strong>{{ $name }}</strong></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    {{ __('Cancel') }}
+                </button>
                 <form action="{{ url($controller . '/' . $id) }}" method="post">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
-                    <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">
+                        {{ __('Delete') }}
+                    </button>
                 </form>
             </div>
         </div>

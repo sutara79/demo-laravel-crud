@@ -11,5 +11,9 @@ npm-debug.log
 yarn-error.log
 .env
 
-# Code coverage of PHPUnit
+# テストのカバレッジを保存する場所
 /coverage
+
+# 設定ファイルをコピーして保存
+# (Duskのテストでエラーがあると、.envが壊れる場合があるため)
+.env.mycopy

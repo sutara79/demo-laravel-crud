@@ -10,7 +10,7 @@ services:
   - postgresql
 
 addons:
-  chrome: stable # ブラウザテスト用
+  chrome: beta # ブラウザテスト用
 
 install:
   # Composerのパッケージをインストール
@@ -28,7 +28,7 @@ before_script:
 
 script:
   # まず、ブラウザテストを実行
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
   - php artisan dusk
 

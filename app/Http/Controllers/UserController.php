@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
+        $users = User::paginate(5);
         return view('users.index', ['users' => $users]);
     }
 
@@ -37,7 +37,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUser $request
+     * @param  \App\Http\Requests\StoreUser  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUser $request)
@@ -46,10 +46,8 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
-        $user->lang = session('locale');
-        $user->timezone = 'UTC';
         $user->save();
-        return redirect('users/'.$user->id)->with('status', __('Created new user.'));
+        return redirect('users/' . $user->id)->with('status', __('Created new user.'));
     }
 
     /**
@@ -60,6 +58,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        // そのユーザーが投稿した記事のうち、最新5件を取得
         $user->posts = $user->posts()->paginate(5);
         return view('users.show', ['user' => $user]);
     }
@@ -79,18 +78,22 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUser $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUser $request, User $user)
+    public function update(Request $request, User $user)
     {
         $this->authorize('edit', $user);
+
+        // name欄だけを検査するため、元のStoreUserクラス内のバリデーション・ルールからname欄のルールだけを取り出す。
+        $request->validate([
+            'name' => (new StoreUser())->rules()['name']
+        ]);
+
         $user->name = $request->name;
-        $user->lang = $request->lang;
-        $user->timezone = $request->timezone;
         $user->save();
-        return redirect('users/'.$user->id)->with('status', __('Updated a user.'));
+        return redirect('users/' . $user->id)->with('status', __('Updated a user.'));
     }
 
     /**

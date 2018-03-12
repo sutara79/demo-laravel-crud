@@ -1,5 +1,5 @@
 {
-    "My practice for basic CRUD of Laravel 5.5 on Heroku.": "Laravel 5.5の基本的なCRUDをHerokuで公開する練習です。",
+    "My practice for basic CRUD of Laravel 5.6 on Heroku.": "Laravel 5.6の基本的なCRUDをHerokuで公開する練習です。",
     "Feature": "機能",
     "All visitors can read all posts.": "訪問者はすべての投稿を読めます。",
     "All visitors can read all users' profile except email address.": "訪問者はメールアドレスを除く会員のプロフィールを読めます。",

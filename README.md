@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/sutara79/demo-laravel-crud/branch/master/graph/badge.svg)](https://codecov.io/gh/sutara79/demo-laravel-crud)
 
 
-My practice for basic CRUD of Laravel 5.5 with Heroku.  
+My practice for basic CRUD of Laravel 5.6 with Heroku.
 
 
 ## Demo

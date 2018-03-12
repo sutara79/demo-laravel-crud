@@ -10,7 +10,17 @@ class UserPolicy
     use HandlesAuthorization;
 
     /**
-     * Admin can do everything.
+     * Create a new policy instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * 管理者には全ての行動を認可する。
      * See http://qiita.com/inaka_phper/items/09e730bf5a0abeb9e51a
      *
      * @param $user
@@ -23,7 +33,7 @@ class UserPolicy
     }
 
     /**
-     * Determine whether the user can update or delete the post.
+     * 編集と削除の認可を判断する。
      *
      * @param  \App\User  $userAuth
      * @param  \App\User  $userPage

@@ -11,10 +11,12 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        // Use Faker
-        // https://github.com/fzaninotto/Faker
+        // Fakerを使う
         $faker = Faker\Factory::create('ja_JP');
-        for ($i = 0; $i < 40; $i++) {
+
+        // ランダムに記事を作成
+        for ($i = 0; $i < 40; $i++)
+        {
             DB::table('posts')->insert([
                 'title' => $faker->text(20),
                 'body' => $faker->text(200),

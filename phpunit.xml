@@ -20,6 +20,8 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+
+            <!-- 除外リストを追加する -->
             <exclude>
                 <directory suffix=".php">./app/Console</directory>
                 <directory suffix=".php">./app/Exceptions</directory>

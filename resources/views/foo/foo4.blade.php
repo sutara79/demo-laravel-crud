@@ -1,6 +1,7 @@
-@extends('../layouts/foo')
+@extends('../layouts/my')
+@section('title', $title)
 @section('content')
   {{-- 個別ページの内容 --}}
-  <h1>{{ $title }}</h1>
+  <h2>{{ $title }}</h2>
   <p>{{ $body }}</p>
 @endsection

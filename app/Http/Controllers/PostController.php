@@ -21,6 +21,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate(5);
+        \Debugbar::info($posts);
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -64,7 +65,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post $post
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
@@ -73,11 +74,12 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\StorePost $request
-     * @param  \App\Post $post
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function update(StorePost $request, Post $post)
@@ -92,7 +94,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post $post
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)

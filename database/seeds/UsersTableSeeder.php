@@ -11,9 +11,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // Use Faker
-        // https://github.com/fzaninotto/Faker
+        // Fakerを使う
         $faker = Faker\Factory::create('ja_JP');
+
+        // 固定ユーザーを作成
         DB::table('users')->insert([
             'name' => 'sutara79',
             'email' => 'toumin.m7@gmail.com',
@@ -32,7 +33,10 @@ class UsersTableSeeder extends Seeder
             'created_at' => $faker->dateTime(),
             'updated_at' => $faker->dateTime(),
         ]);
-        for ($i = 0; $i < 18; $i++) {
+
+        // ランダムにユーザーを作成
+        for ($i = 0; $i < 18; $i++)
+        {
             DB::table('users')->insert([
                 'name' => $faker->unique()->userName(),
                 'email' => $faker->unique()->email(),

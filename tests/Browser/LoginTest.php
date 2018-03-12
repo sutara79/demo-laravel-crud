@@ -1,5 +1,4 @@
 <?php
-
 namespace Tests\Browser;
 
 use Tests\DuskTestCase;
@@ -13,7 +12,6 @@ class LoginTest extends DuskTestCase
 {
     // Dusk実行前にマイグレーションする
     use DatabaseMigrations;
-
     /**
      * ログイン機能をテストする
      *
@@ -25,7 +23,6 @@ class LoginTest extends DuskTestCase
         $user = factory(User::class)->create([
             'email' => 'dusk@foo.com',
         ]);
-
         $this->browse(function (Browser $browser) use ($user) {
             $browser->visit('/login') // ログインページへ移動
                     ->type('email', $user->email) // メールアドレスを入力

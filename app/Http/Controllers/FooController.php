@@ -11,7 +11,6 @@ class FooController extends Controller
     {
         return 'Foo1!!';
     }
-
     public function foo2()
     {
         return view('foo.foo2', [
@@ -19,7 +18,6 @@ class FooController extends Controller
             'body' => 'My first Laravel.'
         ]);
     }
-
     public function foo3()
     {
         $user = User::find(1);
@@ -27,7 +25,6 @@ class FooController extends Controller
             'user' => $user
         ]);
     }
-
     public function foo4()
     {
         return view('foo.foo4', [

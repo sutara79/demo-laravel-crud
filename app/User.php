@@ -28,13 +28,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * Relation: User has many Posts.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+    // 複数形 (1対多の関係)
     public function posts()
     {
+        // 記事を新しい順で取得する
         return $this->hasMany('App\Post')->latest();
     }
 
@@ -50,7 +47,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Whether current user is admin.
+     * 現在のユーザーが管理者かどうかを調べる
      *
      * @return boolean
      */

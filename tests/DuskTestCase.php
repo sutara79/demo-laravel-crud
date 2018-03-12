@@ -32,14 +32,14 @@ abstract class DuskTestCase extends BaseTestCase
         $options = (new ChromeOptions)->addArguments([
             '--disable-gpu',
             '--headless',
-            // Bootstrap4のブレークポイントの基準で「Large devices」となるよう横幅を指定(992px以上)。
+
+            // Bootstrap4のブレークポイントの基準で「Large devices(992px以上)」となるよう横幅を指定。
             // ただし、ウィンドウ枠などを考慮して余裕をもたせる。
             '--window-size=1100,600',
         ]);
 
         return RemoteWebDriver::create(
             'http://localhost:9515', DesiredCapabilities::chrome()->setCapability(
-            // 'http://localhost:9222', DesiredCapabilities::chrome()->setCapability(
                 ChromeOptions::CAPABILITY, $options
             )
         );

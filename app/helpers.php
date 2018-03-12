@@ -1,9 +1,9 @@
 <?php
 if (! function_exists('my_is_current_controller')) {
     /**
-     * Check if the current controller's name matches given string.
+     * 現在のコントローラ名が、複数の名前のどれかに一致するかどうかを判別する
      *
-     * @param string $names Comma separated controller's name
+     * @param string $names カンマ区切りされた複数のコントローラ名
      * @return bool
      */
     function my_is_current_controller($names)
@@ -30,14 +30,12 @@ if (! function_exists('my_locale_url')) {
         }
         // Set locale to params
         $params['lang'] = $locale;
-
         // Build query
         $paramsJoined = [];
         foreach($params as $param => $value) {
            $paramsJoined[] = "$param=$value";
         }
         $query = implode('&', $paramsJoined);
-
         // Build URL
         $url = (App::environment('production') ? 'https' : $urlParsed['scheme']).'://'.
                // No necessity to deal with "user" and "pass".
@@ -46,30 +44,6 @@ if (! function_exists('my_locale_url')) {
                (isset($urlParsed['path']) ? $urlParsed['path'] : '/').
                '?'.$query.
                (isset($urlParsed['fragment']) ? '#'.$urlParsed['fragment'] : '');
-
         return $url;
-    }
-}
-
-/** @todo Complete this function */
-if (! function_exists('my_date')) {
-    /**
-     * Get datetime of user's timezone.
-     *
-     * @param string $date
-     * @return string
-     */
-    function my_date($date)
-    {
-        // Create DateTime object
-        $t = new DateTime($date, new DateTimeZone('UTC'));
-
-        // Get user's timezone
-        /** @todo Complete getting user's timezone */
-        $timezone = 'Asia/Tokyo';
-
-        // Return date
-        $t->setTimeZone(new DateTimeZone($timezone));
-        return $t->format(__('Y-m-d H:i:s'));
     }
 }

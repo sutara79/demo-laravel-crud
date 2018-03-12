@@ -17,7 +17,7 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertTitle(env('APP_NAME'));
+                    ->assertSee('Laravel');
         });
     }
 }

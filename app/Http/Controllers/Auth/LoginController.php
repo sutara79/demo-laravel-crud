@@ -47,7 +47,8 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        return redirect('users/'.$user->id)->with('status', __('You logged in.'));
+        // ログインしたら、そのユーザーのプロフィール・ページへ移動
+        return redirect('users/' . $user->id)->with('status', __('You logged in.'));
     }
 
     /**
@@ -60,6 +61,8 @@ class LoginController extends Controller
     {
         $this->guard()->logout();
         $request->session()->invalidate();
+
+        // ログアウトしたら、トップページへ移動
         return redirect('/')->with('status', __('You logged out.'));
     }
 }

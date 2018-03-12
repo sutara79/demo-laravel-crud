@@ -13,7 +13,7 @@ class StoreUser extends FormRequest
      */
     public function authorize()
     {
-        // The authorization logic is in another part.
+        // 認可は別の箇所で行うので、ここでは素通りさせる
         return true;
     }
 

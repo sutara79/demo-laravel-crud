@@ -53,6 +53,7 @@ class RegisterController extends Controller
         //     'email' => 'required|string|email|max:255|unique:users',
         //     'password' => 'required|string|min:6|confirmed',
         // ]);
+        // 統一したバリデーション・ルールを用いる
         return Validator::make($data, (new \App\Http\Requests\StoreUser())->rules());
     }
 
@@ -60,7 +61,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return \App\User
      */
     protected function create(array $data)
     {
@@ -80,6 +81,7 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        return redirect('users/'.$user->id)->with('status', __('You were registered.'));
+        // 登録したら、そのユーザーのプロフィール・ページへ移動
+        return redirect('users/' . $user->id)->with('status', __('You were registered.'));
     }
 }

@@ -13,7 +13,7 @@ class StorePost extends FormRequest
      */
     public function authorize()
     {
-        // The authorization logic is in another part.
+        // 認可は別の箇所で行うので、ここでは素通りさせる
         return true;
     }
 
@@ -25,6 +25,7 @@ class StorePost extends FormRequest
     public function rules()
     {
         return [
+            // 題名は191文字まで、本文は400文字まで
             'title' => 'required|max:191',
             'body' => 'required|max:400',
         ];

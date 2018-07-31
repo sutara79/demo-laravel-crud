@@ -7,18 +7,20 @@
     <h1>{{ $title }}</h1>
 
     <!-- 編集・削除ボタン -->
-    @can('edit', $user)
-        <div>
-            <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary">
-                {{ __('Edit') }}
-            </a>
-            @component('components.btn-del')
-                @slot('controller', 'users')
-                @slot('id', $user->id)
-                @slot('name', $user->title)
-            @endcomponent
-        </div>
-    @endcan
+    @if ($user->id != 1)
+        @can('edit', $user)
+            <div>
+                <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary">
+                    {{ __('Edit') }}
+                </a>
+                @component('components.btn-del')
+                    @slot('controller', 'users')
+                    @slot('id', $user->id)
+                    @slot('name', $user->title)
+                @endcomponent
+            </div>
+        @endcan
+    @endif
 
     <!-- ユーザー1件の情報 -->
     <dl class="row">

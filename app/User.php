@@ -47,9 +47,9 @@ class User extends Authenticatable
     }
 
     /**
-     * 現在のユーザーが管理者かどうかを調べる
+     * 現在のユーザー、または引数で渡されたIDが管理者かどうかを返す
      *
-     * @param  number  $id ユーザーID。未設定の場合は、現在ログインしているユーザーのIDを使うことになる
+     * @param  number  $id  User ID
      * @return boolean
      */
     public function isAdmin($id = null) {

@@ -7,6 +7,7 @@
     <h1>{{ $title }}</h1>
 
     <!-- 編集・削除ボタン -->
+    {{-- 管理者のページを表示中の場合は、編集・削除ボタンを表示させない --}}
     @if (Auth::check() && !Auth::user()->isAdmin($user->id))
         @can('edit', $user)
             <div>

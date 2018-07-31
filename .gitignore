@@ -15,6 +15,11 @@ yarn-error.log
 # テストのカバレッジを保存する場所
 /coverage
 
+#### Dusk
 # 設定ファイルをコピーして保存
 # (Duskのテストでエラーがあると、.envが壊れる場合があるため)
 .env.mycopy
+
+# Duskが一時的に生成するファイル
+.env.backup
+phpunit.dusk.xml

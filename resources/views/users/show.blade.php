@@ -7,7 +7,7 @@
     <h1>{{ $title }}</h1>
 
     <!-- 編集・削除ボタン -->
-    @if ($user->id != 1)
+    @if (Auth::check() && !Auth::user()->isAdmin($user->id))
         @can('edit', $user)
             <div>
                 <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary">

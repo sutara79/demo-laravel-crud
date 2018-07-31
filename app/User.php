@@ -49,9 +49,11 @@ class User extends Authenticatable
     /**
      * 現在のユーザーが管理者かどうかを調べる
      *
+     * @param  number  $id ユーザーID。未設定の場合は、現在ログインしているユーザーのIDを使うことになる
      * @return boolean
      */
-    public function isAdmin() {
-        return $this->id === config('admin_id');
+    public function isAdmin($id = null) {
+        $id = ($id) ? $id : $this->id;
+        return $id == config('admin_id');
     }
 }

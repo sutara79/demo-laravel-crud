@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "sutara79/demo-laravel-crud",
+    "description": "My practice for basic CRUD of Laravel 5 with Heroku.",
+    "keywords": ["demo", "laravel"],
     "license": "MIT",
     "type": "project",
     "require": {

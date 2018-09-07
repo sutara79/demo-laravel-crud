@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('top');
 });
 
 Route::get('foo', function () {
@@ -23,3 +23,6 @@ Route::get('foo/foo1', 'FooController@foo1');
 Route::get('foo/foo2', 'FooController@foo2');
 Route::get('foo/foo3', 'FooController@foo3');
 Route::get('foo/foo4', 'FooController@foo4');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

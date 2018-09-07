@@ -22,6 +22,7 @@ class PostsTableSeeder extends Seeder
                 'body' => $faker->text(200),
                 'created_at' => $faker->dateTime(),
                 'updated_at' => $faker->dateTime(),
+                'user_id' => $faker->numberBetween(1, 20),
             ]);
         }
     }

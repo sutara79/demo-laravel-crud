@@ -27,4 +27,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * リレーション (1対多の関係)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts() // 複数形
+    {
+        // 記事を新しい順で取得する
+        return $this->hasMany('App\Post')->latest();
+    }
 }

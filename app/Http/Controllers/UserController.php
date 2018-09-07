@@ -52,6 +52,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        // そのユーザーが投稿した記事のうち、最新5件を取得
+        $user->posts = $user->posts()->paginate(5);
         return view('users.show', ['user' => $user]);
     }
 

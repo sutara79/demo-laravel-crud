@@ -8,7 +8,7 @@ use App\User;
 class UserController extends Controller
 {
     /**
-     * 各アクションの前に実行したいミドルウェア
+     * 各アクションの前に実行させるミドルウェア
      */
     public function __construct()
     {

@@ -8,6 +8,14 @@ use App\Post;
 class PostController extends Controller
 {
     /**
+     * 各アクションの前に実行したいミドルウェア
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -39,6 +47,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->user_id = $request->user()->id;
         $post->save();
         return redirect('posts/'.$post->id);
     }

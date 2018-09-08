@@ -24,7 +24,7 @@
         <dd class="col-md-10">{{ $user->id }}</dd>
         <dt class="col-md-2">{{ __('Name') }}</dt>
         <dd class="col-md-10">{{ $user->name }}</dd>
-        <dt class="col-md-2">{{ __('Email') }}</dt>
+        <dt class="col-md-2">{{ __('E-Mail Address') }}</dt>
         <dd class="col-md-10">{{ $user->email }}</dd>
     </dl>
 

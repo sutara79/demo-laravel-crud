@@ -144,7 +144,7 @@ return [
         'title' => __('Title'),
         'body' => __('Body'),
         'name' => __('Name'),
-        'email' => __('Email'),
+        'email' => __('E-Mail Address'),
         'password' => __('Password'),
     ],
 

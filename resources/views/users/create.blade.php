@@ -13,7 +13,7 @@
             <input id="name" type="text" class="form-control" name="name" required autofocus>
         </div>
         <div class="form-group">
-            <label for="email">{{ __('Email') }}</label>
+            <label for="email">{{ __('E-Mail Address') }}</label>
             <input id="email" type="email" class="form-control" name="email" required>
         </div>
         <div class="form-group">

@@ -8,12 +8,15 @@
     "The admin can edit and delete all users' accounts and posts.": "管理者は会員のアカウントと投稿を編集、削除できます。",
     "Admin": "管理者",
 
+
     "Delete": "削除",
     "Edit": "編集",
     "Create": "新規作成",
     "Submit": "送信",
 
+
     "Y-m-d H:i:s": "Y年m月d日 H:i:s",
+
 
     "Posts": "記事",
     "Post": "記事",
@@ -24,17 +27,21 @@
     "Created": "作成時刻",
     "Updated": "更新時刻",
 
+
     "Posted new article.": "記事を投稿しました。",
     "Updated an article.": "記事を更新しました。",
     "Deleted an article.": "記事を削除しました。",
+
 
     "Created new user.": "ユーザーを追加しました。",
     "Updated a user.": "ユーザー情報を更新しました。",
     "Deleted a user.": "ユーザーを削除しました。",
 
+
     "Confirm delete": "削除の確認",
     "Cancel": "やめる",
     "Are you sure to delete?": "本当に削除してもよろしいですか?",
+
 
     "Users": "ユーザー",
     "User": "ユーザー",
@@ -44,10 +51,12 @@
     "Password": "パスワード",
     "Confirm Password": "パスワード (確認用)",
 
+
     "Send Password Reset Link": "パスワード再設定用のリンクを送る",
     "Reset Password": "パスワード再設定",
     "Click link below and reset password.": "下記のURLにアクセスして、パスワードを再設定してください。",
     "If you did not request a password reset, no further action is required.": "このメールに心当たりがない場合は、このまま削除してください。",
+
 
     "New Post": "投稿する",
     "Login": "ログイン",
@@ -56,9 +65,11 @@
     "Remember Me": "ログインしたままにする",
     "Forgot Your Password?": "パスワードをお忘れですか?",
 
+
     "You logged in.": "ログインしました。",
     "You logged out.": "ログアウトしました。",
     "You were registered.": "ユーザー登録が完了しました。",
+
 
     "Error": "エラー",
     "Forbidden": "閲覧禁止",
@@ -68,10 +79,14 @@
     "Internal Server Error": "サーバ内部エラー",
     "The server was unable to complete your request.": "サーバが処理を完了できませんでした。",
 
-    "Verify Your Email Address": "メールを確認してください",
-    "A fresh verification link has been sent to your email address.": "確認用のリンクをあなたのメールアドレスに送信しました。",
-    "Before proceeding, please check your email for a verification link.": "先へ進む前に、認証用のリンクが記載されたメールが届いていることを確認してください。",
+
+    "Verify Your Email Address": "ユーザー登録を完了してください",
+    "A fresh verification link has been sent to your email address.": "ユーザー登録の確認用のメールを送信しました。",
+    "Before proceeding, please check your email for a verification link.": "メールに記載されているリンクをクリックして、登録手続きを完了してください。",
     "If you did not receive the email,": "メールが届いていなければ、",
-    "click here to request another.": "こちらをクリックして再送信してください。"
+    "click here to request another.": "こちらをクリックして再送信してください。",
+    "Please click the link below to verify your email address.": "下記のリンクをクリックして、このメールアドレスでユーザー登録することを確認してください。",
+    "If you did not create an account, no further action is required.": "ユーザー登録に心当たりがない場合は、このまま削除してください。",
+    "Verify Email Address": "このアドレスで登録する"
 
 }

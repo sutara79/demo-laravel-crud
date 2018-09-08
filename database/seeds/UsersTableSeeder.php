@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'toumin.m7@gmail.com',
             'password' => bcrypt('1234'),
             'lang' => 'ja',
+            'email_verified_at' => $faker->dateTime(),
             'created_at' => $faker->dateTime(),
             'updated_at' => $faker->dateTime(),
         ]);
@@ -28,6 +29,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'foo1@foo.com',
             'password' => bcrypt('1234'),
             'lang' => 'en',
+            'email_verified_at' => $faker->dateTime(),
             'created_at' => $faker->dateTime(),
             'updated_at' => $faker->dateTime(),
         ]);
@@ -40,6 +42,7 @@ class UsersTableSeeder extends Seeder
                 'email' => $faker->unique()->email(),
                 'password' => bcrypt('1234'),
                 'lang' => $faker->randomElement(['en', 'ja']),
+                'email_verified_at' => $faker->dateTime(),
                 'created_at' => $faker->dateTime(),
                 'updated_at' => $faker->dateTime(),
             ]);

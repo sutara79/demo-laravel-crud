@@ -12,3 +12,6 @@ npm-debug.log
 yarn-error.log
 .env
 .phpunit.result.cache
+
+# テストのカバレッジを保存する場所
+/coverage

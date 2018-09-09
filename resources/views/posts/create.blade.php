@@ -10,11 +10,21 @@
         @method('POST')
         <div class="form-group">
             <label for="title">{{ __('Title') }}</label>
-            <input id="title" type="text" class="form-control" name="title" required autofocus>
+            <input id="title" type="text" class="form-control @if ($errors->has('title')) is-invalid @endif" name="title" value="{{ old('title') }}" required autofocus>
+            @if ($errors->has('title'))
+                <span class="invalid-feedback" role="alert">
+                    {{ $errors->first('title') }}
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="body">{{ __('Body') }}</label>
-            <textarea id="body" class="form-control" name="body" rows="8" required></textarea>
+            <textarea id="body" class="form-control @if ($errors->has('body')) is-invalid @endif" name="body" rows="8" required>{{ old('body') }}</textarea>
+            @if ($errors->has('body'))
+                <span class="invalid-feedback" role="alert">
+                    {{ $errors->first('body') }}
+                </span>
+            @endif
         </div>
         <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
     </form>

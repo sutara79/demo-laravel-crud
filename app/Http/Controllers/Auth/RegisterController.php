@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -70,5 +71,21 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    /**
+     * ユーザー登録後の処理
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return \Illuminate\Http\Response
+     */
+    protected function registered(Request $request, $user)
+    {
+        // 登録したら、そのユーザーのプロフィール・ページへ移動
+        return redirect('users/' . $user->id)->with('my_status',
+            __('Registration have not yet completed.') .
+            __('Check your email for a verification link.')
+        );
     }
 }

@@ -68,7 +68,9 @@
 
     "You logged in.": "ログインしました。",
     "You logged out.": "ログアウトしました。",
-    "You were registered.": "ユーザー登録が完了しました。",
+    "Registration have not yet completed.": "登録はまだ完了していません。",
+    "Check your email for a verification link.": "確認用に送信したメールの記載に従って、登録手続きを完了してください。",
+    "Registration completed.": "ユーザー登録が完了しました。",
 
 
     "Error": "エラー",

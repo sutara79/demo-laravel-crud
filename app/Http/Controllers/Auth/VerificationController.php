@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Auth\Events\Verified;
 
 class VerificationController extends Controller
 {
@@ -38,5 +39,20 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    /**
+     * ユーザーのメールアドレスを確認完了とする
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function verify(Request $request)
+    {
+        if ($request->route('id') == $request->user()->getKey() &&
+            $request->user()->markEmailAsVerified()) {
+            event(new Verified($request->user()));
+        }
+        return redirect($this->redirectPath())->with('my_status', __('Registration completed.'));
     }
 }

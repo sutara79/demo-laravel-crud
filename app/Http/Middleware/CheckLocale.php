@@ -20,6 +20,14 @@ class CheckLocale
      */
     public function handle($request, Closure $next)
     {
+        // テストでは使用言語を英語で固定する
+        // Dusk内では __() などは使えないため
+        // 参照: https://laracasts.com/discuss/channels/testing/get-translated-text-in-waitfortext-dusk-dusk-dusk
+        if (\App::environment('testing')) {
+            \App::setLocale('en');
+            return $next($request);
+        }
+
         $locale = '';
         if (isset($_GET['lang'])) {
             // GETパラメータから言語指定を取得する

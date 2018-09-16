@@ -7,18 +7,20 @@
     <h1 id="post-title">{{ $title }}</h1>
 
     {{-- 編集・削除ボタン --}}
-    @can('edit', $post)
-        <div class="edit">
-            <a href="{{ url('posts/'.$post->id.'/edit') }}" class="btn btn-primary">
-                {{ __('Edit') }}
-            </a>
-            @component('components.btn-del')
-                @slot('controller', 'posts')
-                @slot('id', $post->id)
-                @slot('name', $post->title)
-            @endcomponent
-        </div>
-    @endcan
+    @auth
+        @can('edit', $post)
+            <div class="edit">
+                <a href="{{ url('posts/'.$post->id.'/edit') }}" class="btn btn-primary">
+                    {{ __('Edit') }}
+                </a>
+                @component('components.btn-del')
+                    @slot('controller', 'posts')
+                    @slot('id', $post->id)
+                    @slot('name', $post->title)
+                @endcomponent
+            </div>
+        @endcan
+    @endauth
 
     {{-- 記事内容 --}}
     <dl class="row">

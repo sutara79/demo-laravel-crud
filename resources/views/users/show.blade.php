@@ -45,7 +45,11 @@
                     <th>{{ __('Updated') }}</th>
 
                     {{-- 記事の編集・削除ボタンのカラム --}}
-                    @can('edit', $user) <th></th> @endcan
+                    @auth
+                        @can('edit', $user)
+                            <th></th>
+                        @endcan
+                    @endauth
                 </tr>
             </thead>
             <tbody>
@@ -59,18 +63,20 @@
                         <td>{{ $post->body }}</td>
                         <td>{{ $post->created_at }}</td>
                         <td>{{ $post->updated_at }}</td>
-                        @can('edit', $user)
-                            <td nowrap>
-                                <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">
-                                    {{ __('Edit') }}
-                                </a>
-                                @component('components.btn-del')
-                                    @slot('controller', 'posts')
-                                    @slot('id', $post->id)
-                                    @slot('name', $post->title)
-                                @endcomponent
-                            </td>
-                        @endcan
+                        @auth
+                            @can('edit', $user)
+                                <td nowrap>
+                                    <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">
+                                        {{ __('Edit') }}
+                                    </a>
+                                    @component('components.btn-del')
+                                        @slot('controller', 'posts')
+                                        @slot('id', $post->id)
+                                        @slot('name', $post->title)
+                                    @endcomponent
+                                </td>
+                            @endcan
+                        @endauth
                      </tr>
                 @endforeach
             </tbody>

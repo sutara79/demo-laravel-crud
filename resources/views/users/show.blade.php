@@ -17,7 +17,7 @@
                 @component('components.btn-del')
                     @slot('controller', 'users')
                     @slot('id', $user->id)
-                    @slot('name', $user->title)
+                    @slot('name', $user->name)
                 @endcomponent
             </div>
         @endcan
